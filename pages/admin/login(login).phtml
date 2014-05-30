@@ -1,0 +1,13 @@
+<h1>Login</h1>
+<form method="post">
+Username<br/>
+<input name="username"/><br/>
+Password<br/>
+<input type="password" name="password"/><br/>
+<br/>
+<input type="submit"/><br/>
+<?php e($error); ?>
+<?php Session::getCsrfInput(); ?>
+</form>
+
+<p><a href="admin/register">Register</a></p>

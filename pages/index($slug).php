@@ -1,3 +1,3 @@
 <?php
-$page = DB::q1('select * from pages where slug = ?',$slug);
-if (!$page) Router::redirect('error/not_found');
+$post = DB::q1('select * from posts where slug = ?',$slug);
+if (!$post) Router::redirect('error/not_found');

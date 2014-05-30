@@ -1,4 +1,4 @@
-<?php foreach ($pages as $page): ?>
-<h2><a href="<?php e(urlencode($page['pages']['slug']));?>"><?php e($page['pages']['title']);?></a></h2>
-<p><?php e($page['pages']['intro']);?></a> <a href="<?php e(urlencode($page['pages']['slug']));?>">more...</a></p>
+<?php foreach ($posts as $post): ?>
+<h2><a href="<?php e(urlencode($post['posts']['slug']));?>"><?php e($post['posts']['title']);?></a></h2>
+<p><?php e($post['posts']['intro']);?></a> <a href="<?php e(urlencode($post['posts']['slug']));?>">more...</a></p>
 <?php endforeach; ?>

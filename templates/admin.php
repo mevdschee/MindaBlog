@@ -14,7 +14,7 @@
     <p>
       <a href="admin">Dashboard</a><br/>
       <a href="admin/users">Users</a><br/>
-      <a href="admin/pages">Pages</a><br/>
+      <a href="admin/posts">Posts</a><br/>
       <br/>
       <a href="admin/logout">Logout</a><br/>
     </p>

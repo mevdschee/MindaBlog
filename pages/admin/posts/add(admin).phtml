@@ -1,0 +1,44 @@
+<h1>add posts</h1>
+<div id="epiceditor"><textarea id="my-edit-area"></textarea></div>
+<!-- <script src="js/epiceditor.js"></script> -->
+<script src="js/epiceditor.min.js"></script>
+<script language="javascript">
+var opts = {
+  container: 'epiceditor',
+  textarea: document.getElementById('my-edit-area'),
+  basePath: '',
+  clientSideStorage: true,
+  localStorageName: 'epiceditor',
+  useNativeFullscreen: true,
+  parser: marked,
+  file: {
+    name: 'epiceditor',
+    defaultContent: '',
+    autoSave: 100
+  },
+  theme: {
+    base: 'css/epiceditor/base/epiceditor.css',
+    preview: 'css/epiceditor/preview/preview-dark.css',
+    editor: 'css/epiceditor/editor/epic-dark.css'
+  },
+  button: {
+    preview: true,
+    fullscreen: true,
+    bar: "auto"
+  },
+  focusOnLoad: false,
+  shortcut: {
+    modifier: 18,
+    fullscreen: 70,
+    preview: 80
+  },
+  string: {
+    togglePreview: 'Toggle Preview Mode',
+    toggleEdit: 'Toggle Edit Mode',
+    toggleFullscreen: 'Enter Fullscreen'
+  },
+  autogrow: true
+}
+var editor = new EpicEditor(opts);
+editor.load();
+</script>

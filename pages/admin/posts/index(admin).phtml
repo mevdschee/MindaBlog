@@ -1,0 +1,17 @@
+<h1>posts</h1>
+<p>All registered posts:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Slug</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($posts as $post): ?>
+      <tr><td><?php e($post['posts']['slug']);?></td><td><?php e($post['posts']['title']);?></td></tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+
+<p><a href="admin/posts/add">Add post</a></p>

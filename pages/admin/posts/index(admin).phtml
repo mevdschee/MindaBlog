@@ -1,15 +1,22 @@
 <h2>List posts</h2>
 <p>All registered posts:</p>
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Slug</th>
       <th>Title</th>
+      <th>Author</th>
+      <th>Tags</th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($posts as $post): ?>
-      <tr><td><?php e($post['posts']['slug']);?></td><td><?php e($post['posts']['title']);?></td></tr>
+    <?php foreach ($rows as $row): ?>
+    <tr>
+      <td><?php e($row['posts']['title']);?></td>
+      <td><a href="admin/users/view/<?php e($row['users']['id']);?>"><?php e($row['users']['username']);?></a></td>
+      <td><?php e($row['posts']['tags']);?></td>
+      <td><?php e($row['posts']['published']?:'draft');?></td>
+    </tr>
     <?php endforeach; ?>
   </tbody>
 </table>

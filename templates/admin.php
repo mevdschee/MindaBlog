@@ -5,6 +5,7 @@ $menu = array(
 	'admin/index'=>array('title'=>'Dashboard'),
 	'admin/posts'=>array('title'=>'Posts'),
 	'admin/users'=>array('title'=>'Users'),
+	'admin/settings'=>array('title'=>'Settings'),
 );
 array_walk($menu, function(&$item,$url) { 
 	$item['active'] = substr(Router::getUrl(),0,strlen($url))==$url?'active':''; 
@@ -46,7 +47,7 @@ array_walk($menu, function(&$item,$url) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="">MindaBlog</a>
+      <a class="navbar-brand" href=""><?php e($_SESSION['settings']['title']); ?></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

@@ -1,2 +1,2 @@
 <?php
-$posts = DB::q('select * from posts');
+$rows = DB::q('select * from posts,users where user_id = users.id');

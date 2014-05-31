@@ -1,0 +1,9 @@
+<h2>List settings</h2>
+<table class="table">
+  <?php foreach ($rows as $row): ?>
+  <tr>
+    <th><?php e($row['settings']['key']);?></th>
+    <td><?php e($row['settings']['value']);?></td>
+  </tr>
+  <?php endforeach; ?>
+</table>

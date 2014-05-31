@@ -1,0 +1,19 @@
+<h2>List users</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($rows as $row): ?>
+    <tr>
+      <td><?php e($row['users']['username']);?></td>
+      <td><?php e($row['users']['created']);?></td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+
+<p><a href="admin/users/add">Add user</a></p>

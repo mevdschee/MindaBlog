@@ -2,7 +2,6 @@
 if (!isset($_SESSION['user'])) Router::redirect('admin/login'); 
 $username = $_SESSION['user']['username'];
 $menu = array(
-	'admin/index'=>array('title'=>'Dashboard'),
 	'admin/posts'=>array('title'=>'Posts'),
 	'admin/users'=>array('title'=>'Users'),
 	'admin/settings'=>array('title'=>'Settings'),
@@ -27,14 +26,8 @@ array_walk($menu, function(&$item,$url) {
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     <script src="js/bootstrap.min.js"></script>
-        
-    <!-- Markdown -->
-    <script src="js/markdown.js"></script>
-        
-    <!-- Bootstrap Markdown -->
-    <link href="css/bootstrap-markdown.min.css" rel="stylesheet" media="screen">
-    <script src="js/bootstrap-markdown.js"></script>
-    
+
+<?php echo Buffer::get('head'); ?>
   </head>
   <body>
   <nav class="navbar navbar-default" role="navigation">
@@ -47,7 +40,7 @@ array_walk($menu, function(&$item,$url) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href=""><?php e($_SESSION['settings']['title']); ?></a>
+      <a class="navbar-brand" href="admin/index">MindaBlog</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

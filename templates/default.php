@@ -11,7 +11,7 @@
   <body>
     <div class="title">
       <div class="logo">
-        <img src="img/mindablog_logo.png" alt="MindaBlog logo"> MindaBlog
+        <img src="img/mindablog_logo.png" alt="logo"> MindaBlog - fast blog for the masses
       </div>
     </div>
     <div class="menu">

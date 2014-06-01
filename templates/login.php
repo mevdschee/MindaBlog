@@ -9,7 +9,7 @@
     <link href="css/default.css" rel="stylesheet">
   </head>
   <body>
-    <?php echo Router::getContent(); ?>
+    <?php echo Buffer::get('html'); ?>
     <p><a href="">Back to site</a></p>
   </body>
 </html>

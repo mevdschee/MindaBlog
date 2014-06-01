@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (!isset($_SESSION['user'])) Router::redirect('admin/login'); 
 $username = $_SESSION['user']['username'];
 $menu = array(
@@ -78,7 +78,7 @@ array_walk($menu, function(&$item,$url) {
 
     <div class="row">
       <div class="col-md-12">
-         <?php echo Router::getContent(); ?>
+         <?php echo Buffer::get('html'); ?>
       </div>
     </div>
 

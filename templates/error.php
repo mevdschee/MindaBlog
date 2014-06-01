@@ -1,4 +1,4 @@
 <?php
-  Router::setContent('<p style="color:red;">ERROR: '.Router::getContent().'</p>');
-  require __DIR__.'/default.php';
+  Buffer::set('html','<p style="color:red;">ERROR: '.Buffer::get('html').'</p>');
+  require 'default.php';
 ?>

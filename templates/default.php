@@ -20,7 +20,7 @@
     </p>
   </div>
   <div class="body">
-    <?php echo Router::getContent(); ?>
+    <?php echo Buffer::get('html'); ?>
   </div>
 </body>
 </html>

@@ -1,2 +1,2 @@
 <?php
-$posts = DB::q('select * from posts');
+$posts = Query::records('select * from posts');

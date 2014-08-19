@@ -9,83 +9,10 @@ $menu = array(
 array_walk($menu, function(&$item,$url) { 
 	$item['active'] = substr(Router::getUrl(),0,strlen($url))==$url?'active':''; 
 });
-?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <base href="<?php echo Router::getBaseUrl(); ?>">
-    <title>MindaBlog Admin</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/favicon.ico">
 
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-    <script src="js/bootstrap.min.js"></script>
-
-<?php echo Buffer::get('head'); ?>
-  </head>
-  <body>
-  <nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="admin/index">MindaBlog</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-		<?php foreach ($menu as $url => $item): ?>
-          <li class="<?php echo $item['active']; ?>">
-		    <a href="<?php echo $url; ?>"><?php echo $item['title']; ?></a>
-		  </li>
-		<?php endforeach; ?>  
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $username; ?> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="admin/users/profile">Profile</a></li>
-            <li class="divider"></li>
-            <li><a href="admin/logout">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-  </nav>
-
-  <div class="container">
-
-    <?php foreach (Session::getFlashMessages() as $message): ?> 
-    <div class="row">
-      <div class="col-md-12">
-         <div class="alert alert-dismissible alert-<?php echo $message['type']; ?>" role="alert">
-	         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  			 <strong><?php echo ucfirst($message['type']); ?>:</strong> <?php echo $message['message']; ?>
-         </div>
-      </div>
-    </div>
-    <?php endforeach; ?> 
-    
-    <div class="row">
-      <div class="col-md-12">
-         <?php echo Buffer::get('html'); ?>
-      </div>
-    </div>
-
-  </div>
-</body>
-</html>
+if (isset($_SESSION['flash_messages'])) {
+	$flashMessages = $_SESSION['flash_messages'];
+	unset($_SESSION['flash_messages']);
+} else {
+	$flashMessages = array();
+}

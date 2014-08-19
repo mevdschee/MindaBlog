@@ -69,6 +69,17 @@ array_walk($menu, function(&$item,$url) {
 
   <div class="container">
 
+    <?php foreach (Session::getFlashMessages() as $message): ?> 
+    <div class="row">
+      <div class="col-md-12">
+         <div class="alert alert-dismissible alert-<?php echo $message['type']; ?>" role="alert">
+	         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  			 <strong><?php echo ucfirst($message['type']); ?>:</strong> <?php echo $message['message']; ?>
+         </div>
+      </div>
+    </div>
+    <?php endforeach; ?> 
+    
     <div class="row">
       <div class="col-md-12">
          <?php echo Buffer::get('html'); ?>

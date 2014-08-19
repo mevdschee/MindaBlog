@@ -1,0 +1,22 @@
+<?php echo Buffer::start('head'); ?>
+    <!-- Markdown -->
+    <script src="js/markdown.js"></script>
+        
+    <!-- Bootstrap Markdown -->
+    <link href="css/bootstrap-markdown.min.css" rel="stylesheet" media="screen">
+    <script src="js/bootstrap-markdown.js"></script>
+<?php echo Buffer::end('head'); ?>
+
+<h2>Edit post</h2>
+<form method="post">
+	<div class="form-group">
+	    <input class="form-control" name="title" type="text" value="<?php e($data['posts']['title']); ?>" placeholder="Title?" />
+	</div>
+    <div class="form-group">
+		<textarea class="form-control" name="content" data-provide="markdown" rows="10"><?php e($data['posts']['content']); ?></textarea>
+    </div>
+    <div class="form-group">
+    	<button class="btn btn-primary" type="submit">Save</button>
+    </div>
+	<?php Session::getCsrfInput(); ?>
+</form> 

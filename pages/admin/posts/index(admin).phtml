@@ -11,7 +11,7 @@
   <tbody>
     <?php foreach ($rows as $row): ?>
     <tr>
-      <td><?php e($row['posts']['title']);?></td>
+      <td><a href="admin/posts/edit/<?php e($row['posts']['id']);?>"><?php e($row['posts']['title']);?></a></td>
       <td><a href="admin/users/view/<?php e($row['users']['id']);?>"><?php e($row['users']['username']);?></a></td>
       <td><?php e($row['posts']['tags']);?></td>
       <td><?php e($row['posts']['published']?:'draft');?></td>

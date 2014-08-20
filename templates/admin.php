@@ -1,6 +1,5 @@
 <?php
 if (!isset($_SESSION['user'])) Router::redirect('admin/login'); 
-$username = $_SESSION['user']['username'];
 $menu = array(
 	'admin/posts'=>array('title'=>'Posts'),
 	'admin/users'=>array('title'=>'Users'),

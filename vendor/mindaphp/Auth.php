@@ -17,7 +17,10 @@ class Auth
 		  static::$saltField,
 		  static::$passwordField);
 	  $user = Query::one($query,$username,$password);
-	  if ($user) $_SESSION['user'] = $user['users'];
+	  if ($user) {
+	  	session_regenerate_id(true);
+	  	$_SESSION['user'] = $user['users'];
+	  }
 	  return $user;
 	}
 	
@@ -26,6 +29,7 @@ class Auth
 	  if (!isset($_SESSION['user'])) return false;
 	  unset($_SESSION['user']);
 	  unset($_SESSION['csrf_token']);
+	  session_regenerate_id(true);
 	  return true;
 	}
 	
@@ -35,11 +39,10 @@ class Auth
 	  $query = sprintf('insert into `%s` (`%s`,`%s`,`%s`,`%s`) values (?,sha1(concat(?,?)),?,NOW())',
 		  static::$usersTable,
 		  static::$usernameField,
-	    static::$passwordField,
+	      static::$passwordField,
 		  static::$saltField,
 		  static::$createdField);
-	  $success = Query::records($query,$username,$salt,$password,$salt);
-	  return $success;
+	  return Query::insert($query,$username,$salt,$password,$salt)!==false;
 	}
 	
 }

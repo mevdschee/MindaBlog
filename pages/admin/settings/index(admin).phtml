@@ -1,9 +1,9 @@
 <h2>Settings</h2>
 <table class="table">
-  <?php foreach ($rows as $row): ?>
+  <?php foreach ($_SESSION['settings'] as $key=>$value): ?>
   <tr>
-    <th><?php e($row['settings']['key']);?></th>
-    <td><?php e($row['settings']['value']);?></td>
+    <th><?php e($key);?></th>
+    <td><?php e($value);?></td>
   </tr>
   <?php endforeach; ?>
 </table>

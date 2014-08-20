@@ -36,17 +36,15 @@ class Query
   public static function value($query)
   {
   	$result = forward_static_call_array('Query::one', func_get_args());
-    while (is_array($result)) {
-      $key = array_shift(array_keys($result));
-      $result = $result[$key];
-    }
-    return $result;
+    if (!is_array($result)) return false;
+    return $result[array_shift(array_keys($result))];
   }
   
   public static function pairs($query)
   {
   	$result = forward_static_call_array('Query::records', func_get_args());
-  	$list = array();
+  	if (!is_array($result)) return false;
+    $list = array();
   	foreach ($result as $record) {
   		$table = array_shift(array_keys($record));
   		$list[array_shift($record[$table])] = array_pop($record[$table]);
@@ -66,8 +64,9 @@ class Query
   private static function one_t($query)
   {
     $result = forward_static_call_array('Query::records_t', func_get_args());
+    if (!is_array($result)) return false;
     if (isset($result[0])) return $result[0];
-    return $result;
+    return $result[array_shift(array_keys($result))];
   }
     
   public static function records($query)
@@ -76,13 +75,19 @@ class Query
     if (func_num_args() > 1) {
       array_splice($args,1,0,array(str_repeat('s', count($args)-1)));
     }
-    return forward_static_call_array('Query::records_t', $args);
+    $result = forward_static_call_array('Query::records_t', $args);
+    if (!is_array($result)) return false;
+    return $result;
   }
    
   private static function records_t($query)
   {
     if (!Debugger::$enabled) {
-      return forward_static_call_array('Query::_records_t', func_get_args());
+      try {
+        return forward_static_call_array('Query::_records_t', func_get_args());
+      } catch (QueryError $e) {
+        return false;
+      }
     }
     $time = microtime(true);
     $result = forward_static_call_array('Query::_records_t', func_get_args());
@@ -105,7 +110,7 @@ class Query
     static::connect();
   	$query = static::$mysqli->prepare($query);
     if (!$query) {
-      return static::error(static::$mysqli->error,false);
+      return static::error(static::$mysqli->error);
     }
     if (func_num_args() > 1) {
       $args = array_slice(func_get_args(), 1);
@@ -116,7 +121,7 @@ class Query
     }
     $query->execute();
     if ($query->errno) {
-      return static::error(mysqli_error(static::$mysqli),false);
+      return static::error(static::$mysqli->error);
     }
     if ($query->affected_rows > -1) {
       return $query->affected_rows;
@@ -144,9 +149,32 @@ class Query
     return $result;
   }
  
-  public static function id()
+  public static function insert($query)
   {
+    $args = func_get_args();
+    if (func_num_args() > 1) {
+      array_splice($args,1,0,array(str_repeat('s', count($args)-1)));
+    }
+    $result = forward_static_call_array('Query::records_t', $args);
+    if (!is_int($result)) return false;
+    if (!$result) return false;
     return static::$mysqli->insert_id;
+  }
+  
+  public static function update($query)
+  {
+  	$args = func_get_args();
+    if (func_num_args() > 1) {
+      array_splice($args,1,0,array(str_repeat('s', count($args)-1)));
+    }
+    $result = forward_static_call_array('Query::records_t', $args);
+    if (!is_int($result)) return false;
+  	return $result;
+  }
+  
+  public static function delete($query)
+  {
+  	return forward_static_call_array('Query::update', func_get_args());
   }
     
   // Undocumented

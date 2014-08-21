@@ -1,2 +1,2 @@
 <?php
-$_SESSION['settings'] = Query::pairs('select `key`, `value` from settings');
+$_SESSION['settings'] = DB::pairs('select `key`, `value` from settings');

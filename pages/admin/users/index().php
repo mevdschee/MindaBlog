@@ -1,2 +1,2 @@
 <?php
-$rows = Query::records('select * from users');
+$rows = DB::select('select * from users');

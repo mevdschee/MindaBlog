@@ -289,7 +289,7 @@
 
         // Set width
         if (options.width && options.width !== 'inherit') {
-          if (jQuery.isNumeric(options.width)) {
+          if (jDB.isNumeric(options.width)) {
             editor.css('display', 'table')
             textarea.css('width', options.width + 'px')
           } else {
@@ -299,7 +299,7 @@
 
         // Set height
         if (options.height && options.height !== 'inherit') {
-          if (jQuery.isNumeric(options.height)) {
+          if (jDB.isNumeric(options.height)) {
             var height = options.height
             if (editorHeader) height = Math.max(0, height - editorHeader.outerHeight())
             if (editorFooter) height = Math.max(0, height - editorFooter.outerHeight())
@@ -498,7 +498,7 @@
           /* browser not supported */
           function() {
               e.value += text
-              return jQuery(e)
+              return jDB(e)
           }
 
       )()
@@ -1056,4 +1056,4 @@
       })
     })
 
-}(window.jQuery);
+}(window.jDB);

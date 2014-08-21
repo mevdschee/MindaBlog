@@ -1,3 +1,3 @@
 <?php
-$data = Query::one('select * from users where id=?',$id);
-$posts = Query::value('select count(*) from posts where user_id=?',$id);
+$data = DB::selectOne('select * from users where id=?',$id);
+$posts = DB::selectValue('select count(*) from posts where user_id=?',$id);

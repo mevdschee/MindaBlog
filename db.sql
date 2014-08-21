@@ -22,7 +22,7 @@ CREATE TABLE `posts` (
   UNIQUE KEY `slug` (`slug`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoQuery DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `posts` (`id`, `slug`, `tags`, `title`, `intro`, `intro_html`, `content`, `content_html`, `created`, `published`, `user_id`) VALUES
 (1,	'slug test',	'',	'title test',	'intro test',	'',	'content test',	'',	'2014-05-29 00:28:49',	NULL,	1);
@@ -34,7 +34,7 @@ CREATE TABLE `settings` (
   `value` varchar(255) COLLATE utf8_bin NOT NULL,
   `comment` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoQuery DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `settings` (`id`, `key`, `value`, `comment`) VALUES
 (1,	'title',	'MindaBlog!',	'');
@@ -48,7 +48,7 @@ CREATE TABLE `users` (
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoQuery DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `users` (`id`, `username`, `password`, `salt`, `created`) VALUES
 (1,	'test',	'c32ac6310706acdadea74c901c3f08fe06c44c61',	'd7e8541887cb9b3461d7364e4e7c8b7d',	'2014-05-28 22:58:22');

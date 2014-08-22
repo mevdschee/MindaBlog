@@ -1,4 +1,7 @@
 <?php foreach ($posts as $post): ?>
 <h2><a href="<?php e(urlencode($post['posts']['slug']));?>"><?php e($post['posts']['title']);?></a></h2>
-<p><?php e($post['posts']['intro']);?></a> <a href="<?php e(urlencode($post['posts']['slug']));?>">more...</a></p>
+<?php echo $post['posts']['html']; ?>
+<?php if ($post['posts']['more_html']): ?>
+  <a href="<?php e(urlencode($post['posts']['slug']));?>">Read full article...</a>
+<?php endif; ?>
 <?php endforeach; ?>

@@ -4,3 +4,5 @@
 composer.phar
 tools/adminer.php
 config/config.php
+
+/vendor/

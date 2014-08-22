@@ -1,0 +1,12 @@
+{
+    "name": "maurits/mindablog",
+    "require": {
+        "michelf/php-markdown": "*"
+    },
+    "authors": [
+        {
+            "name": "Maurits van der Schee",
+            "email": "maurits@vdschee.nl"
+        }
+    ]
+}

@@ -1,3 +1,3 @@
 <h2><a href="<?php e(urlencode($post['posts']['slug']));?>"><?php e($post['posts']['title']);?></a></h2>
-<p><?php e($post['posts']['intro']);?></p>
-<p><?php e($post['posts']['content']);?></p>
+<?php echo $post['posts']['html']; ?>
+<?php echo $post['posts']['more_html']; ?>

@@ -12,6 +12,13 @@
 	    <label class="control-label" for="posts[title]">Title</label>
   		<input class="form-control" name="posts[title]" type="text" value="<?php e($_POST['posts']['title']); ?>" id="posts[title]" />
 	</div>
+	<?php if (isset($errors['posts[slug]'])): ?>
+	<div class="form-group <?php echo isset($errors['posts[slug]'])?'has-error':'' ?>">
+	    <label class="control-label" for="posts[slug]">Slug</label>
+  		<input class="form-control" name="posts[slug]" type="text" value="<?php e($_POST['posts']['slug']); ?>" id="posts[slug]" />
+  		<span class="help-block"><?php if (isset($errors['posts[slug]'])) e($errors['posts[slug]']); ?></span>
+	</div>
+	<?php endif; ?>
 	<div class="form-group">
 		<label class="control-label" for="posts[content]">Content</label>
   		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="10" id="posts[content]"><?php e($_POST['posts']['content']); ?></textarea>

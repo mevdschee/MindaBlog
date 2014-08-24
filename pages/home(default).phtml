@@ -1,7 +1,7 @@
-<?php foreach ($records as $record): ?>
-<h2><a href="<?php e(urlencode($record['posts']['slug']));?>"><?php e($record['posts']['title']);?></a></h2>
-<?php echo $record['posts']['html']; ?>
-<?php if ($record['posts']['more_html']): ?>
-  <a href="<?php e(urlencode($record['posts']['slug']));?>">Read full article...</a>
+<?php foreach (array_keys($data) as $i): ?>
+<h2><a href="<?php e(urlencode($data[$i]['posts']['slug']));?>"><?php e($data[$i]['posts']['title']);?></a></h2>
+<?php echo $data[$i]['posts']['html']; ?>
+<?php if ($data[$i]['posts']['more_html']): ?>
+  <a href="<?php e(urlencode($data[$i]['posts']['slug']));?>">Read full article...</a>
 <?php endif; ?>
 <?php endforeach; ?>

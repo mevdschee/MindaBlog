@@ -1,11 +1,11 @@
 <?php
-$record = DB::selectOne('select * from posts where slug = ?',$slug);
-if (!$record) Router::redirect('error/not_found');
+$data = DB::selectOne('select * from posts where slug = ?',$slug);
+if (!$data) Router::redirect('error/not_found');
 
-if (preg_match('/\r?\n---+\r?\n/', $record['posts']['content'])) {
-	list($record['posts']['html'],$record['posts']['more_html']) = preg_split('/\r?\n---+\r?\n/', $record['posts']['content'], 2);
+if (preg_match('/\r?\n---+\r?\n/', $data['posts']['content'])) {
+	list($data['posts']['html'],$data['posts']['more_html']) = preg_split('/\r?\n---+\r?\n/', $data['posts']['content'], 2);
 } else {
-	list($record['posts']['html'],$record['posts']['more_html']) = array($record['posts']['content'], '');
+	list($data['posts']['html'],$data['posts']['more_html']) = array($data['posts']['content'], '');
 }
-$record['posts']['html'] = Michelf\Markdown::defaultTransform($record['posts']['html']);
-$record['posts']['more_html'] = Michelf\Markdown::defaultTransform($record['posts']['more_html']);
+$data['posts']['html'] = Michelf\Markdown::defaultTransform($data['posts']['html']);
+$data['posts']['more_html'] = Michelf\Markdown::defaultTransform($data['posts']['more_html']);

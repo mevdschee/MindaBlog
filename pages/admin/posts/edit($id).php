@@ -1,15 +1,14 @@
 <?php
-
 if (!empty($_POST)) {
-	$record = $_POST;
-	if (!$record['posts']['slug']) $record['posts']['slug'] = $record['posts']['title'];
-	$record['posts']['slug'] = preg_replace('/--+/','-',trim(preg_replace('/[^\-a-z0-9]/','-',strtolower($record['posts']['slug'])),'-'));	
-	$rows = DB::update('UPDATE posts SET slug = ?, title = ?, content = ? WHERE id = ?', $record['posts']['slug'], $record['posts']['title'], $record['posts']['content'], $id);
-	if ($rows) {
-		$_SESSION['flash']['success'] = 'Post updated';
-		Router::redirect('admin/posts/index');
+	if (!preg_match('/^[a-z0-9-]+$/', $_POST['posts']['slug'])) $errors['posts[slug]']='Only letters, numbers and the minus character are allowed';
+	if (!isset($errors)) {
+		$rowsAffected = DB::update('UPDATE posts SET slug = ?, title = ?, content = ? WHERE id = ?', $_POST['posts']['slug'], $_POST['posts']['title'], $_POST['posts']['content'], $id);
+		if ($rowsAffected!==false) {
+			$_SESSION['flash']['success'] = 'Post saved';
+			Router::redirect('admin/posts/index');
+		}
 	}
-	else $flash['danger'] = 'Post not updated';
+	$flash['danger'] = 'Post not updated'; 
 } else {
-	$record = DB::selectOne('SELECT * from posts where id = ?', $id);
+	$_POST = DB::selectOne('SELECT * from posts where id = ?', $id);
 }

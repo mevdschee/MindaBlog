@@ -1,11 +1,12 @@
 <?php
-$records = DB::select('select * from posts');
-foreach ($records as &$record) {
-	if (preg_match('/\r?\n---+\r?\n/', $record['posts']['content'])) {
-		list($record['posts']['html'],$record['posts']['more_html']) = preg_split('/\r?\n---+\r?\n/', $record['posts']['content'], 2);
+$data = DB::select('select * from posts');
+foreach (array_keys($data) as $i) {
+	if (preg_match('/\r?\n---+\r?\n/', $data[$i]['posts']['content'])) {
+		list($data[$i]['posts']['html'],$data[$i]['posts']['more_html']) = preg_split('/\r?\n---+\r?\n/', $data[$i]['posts']['content'], 2);
 	} else {
-		list($record['posts']['html'],$record['posts']['more_html']) = array($record['posts']['content'], '');
+		list($data[$i]['posts']['html'],$data[$i]['posts']['more_html']) = array($data[$i]['posts']['content'], '');
 	}
-	$record['posts']['html'] = Michelf\Markdown::defaultTransform($record['posts']['html']);
-	$record['posts']['more_html'] = Michelf\Markdown::defaultTransform($record['posts']['more_html']);
+	$data[$i]['posts']['html'] = trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['html']));
+	$data[$i]['posts']['more_html'] = trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['more_html']));
 }
+d($data);

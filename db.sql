@@ -12,7 +12,8 @@ CREATE TABLE `posts` (
   `tags` varchar(255) COLLATE utf8_bin NOT NULL,
   `title` text COLLATE utf8_bin NOT NULL,
   `content` mediumtext COLLATE utf8_bin NOT NULL,
-  `created` datetime NOT NULL,
+  `word_count` int(11) NOT NULL,
+  `modified` datetime NOT NULL,
   `published` date DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -21,8 +22,8 @@ CREATE TABLE `posts` (
   CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-INSERT INTO `posts` (`id`, `slug`, `tags`, `title`, `intro`, `intro_html`, `content`, `content_html`, `created`, `published`, `user_id`) VALUES
-(1,	'slug test',	'',	'title test',	'intro test',	'',	'content test',	'',	'2014-05-29 00:28:49',	NULL,	1);
+INSERT INTO `posts` (`id`, `slug`, `tags`, `title`, `content`, `words`, `modified`, `published`, `user_id`) VALUES
+(22,	'2014-test',	'',	'test',	'test',	0,	'0000-00-00 00:00:00',	'2014-08-28',	1);
 
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (

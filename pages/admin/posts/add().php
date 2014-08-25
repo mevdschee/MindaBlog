@@ -4,7 +4,7 @@ if (!empty($_POST)) {
 	if (!preg_match('/^[a-z0-9-]+$/', $_POST['posts']['slug'])) $errors['posts[slug]']='Only letters, numbers and the minus character are allowed';
 	if (DB::selectValue('SELECT slug FROM posts where slug = ?', $_POST['posts']['slug'])) $errors['posts[slug]']='Already taken';
 	if (!isset($errors)) {
-		$id = DB::insert('INSERT INTO posts (slug,title,content,user_id) VALUES (?, ?, ?, ?)', $_POST['posts']['slug'], $_POST['posts']['title'], $_POST['posts']['content'], $_SESSION['user']['id']);
+		$id = DB::insert('INSERT INTO posts (slug,title,content,word_count,user_id) VALUES (?, ?, ?, ?, ?)', $_POST['posts']['slug'], $_POST['posts']['title'], $_POST['posts']['content'], str_word_count($_POST['posts']['content']), $_SESSION['user']['id']);
 		if ($id) {
 			Router::redirect('admin/posts/index');
 		}

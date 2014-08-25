@@ -15,7 +15,10 @@
 	<?php if (isset($errors['posts[slug]'])): ?>
 	<div class="form-group <?php echo isset($errors['posts[slug]'])?'has-error':'' ?>">
 	    <label class="control-label" for="posts[slug]">Slug</label>
-  		<input class="form-control" name="posts[slug]" type="text" value="<?php e($_POST['posts']['slug']); ?>" id="posts[slug]" />
+  		<div class="input-group">
+        	<div class="input-group-addon">/</div>
+  			<input class="form-control" name="posts[slug]" type="text" value="<?php e($_POST['posts']['slug']); ?>" id="posts[slug]" />
+  		</div>
   		<span class="help-block"><?php if (isset($errors['posts[slug]'])) e($errors['posts[slug]']); ?></span>
 	</div>
 	<?php endif; ?>

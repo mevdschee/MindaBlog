@@ -1,23 +1,13 @@
 <h2>Posts</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Tags</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($rows as $row): ?>
-    <tr>
-      <td><a href="admin/posts/edit/<?php e($row['posts']['id']);?>"><?php e($row['posts']['title']);?></a></td>
-      <td><a href="admin/users/view/<?php e($row['users']['id']);?>"><?php e($row['users']['username']);?></a></td>
-      <td><?php e($row['posts']['tags']);?></td>
-      <td><?php e($row['posts']['published']?:'draft');?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-
+<div class="list-group">
+  <?php foreach ($rows as $row): ?>
+    <a href="admin/posts/edit/<?php e($row['posts']['id']);?>" class="list-group-item">
+      <span class="badge">42</span><span class="label label-warning" style="float:right; margin-right:5px;">Warning</span>
+      <h4 class="list-group-item-heading"><?php e($row['posts']['title']);?> <small>/<?php e($row['posts']['slug']);?></small></h4>
+      <p class="list-group-item-text">
+        <?php e($row['posts']['published']?:'draft');?> by "<?php e($row['users']['username']);?>".
+      </p>
+    </a>
+  <?php endforeach; ?>
+</div>
 <p><a class="btn btn-primary" href="admin/posts/add">Add</a></p>

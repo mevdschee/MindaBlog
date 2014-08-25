@@ -1,7 +1,7 @@
 <h2>Delete post</h2>
 <form method="post" action="admin/posts/delete/<?php echo $id; ?>">
     <p>Are you sure?</p>
+	<button class="btn btn-danger pull-right" type="submit">Yes</button>
 	<a class="btn btn-primary" href="admin/posts/edit/<?php echo $id; ?>">No</a>
-	<button class="btn btn-danger" type="submit">Yes</button>
 	<?php Session::getCsrfInput(); ?>
 </form>

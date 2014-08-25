@@ -3,8 +3,9 @@
 </div>
 <div class="list-group">
   <?php foreach ($rows as $row): ?>
-    <a href="admin/posts/edit/<?php e($row['posts']['id']);?>" class="list-group-item">
+    <a href="admin/posts/edit/<?php e($row['posts']['id']);?>" style="padding-left: 85px;" class="list-group-item">
       <span class="badge">42</span><span class="label label-warning" style="float:right; margin-right:5px;">Warning</span>
+      <h3 style="float:left; position: absolute; left: 10px; top:-10px; width: 85px;">16 <small>Aug</small></h3>
       <h4 class="list-group-item-heading"><?php e($row['posts']['title']);?> <small>/<?php e($row['posts']['slug']);?></small></h4>
       <p class="list-group-item-text">
         <?php e($row['posts']['published']?:'draft');?> by "<?php e($row['users']['username']);?>".

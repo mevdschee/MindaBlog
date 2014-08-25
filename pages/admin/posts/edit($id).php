@@ -5,7 +5,6 @@ if (!empty($_POST)) {
 	if (!isset($errors)) {
 		$rowsAffected = DB::update('UPDATE posts SET slug = ?, title = ?, content = ? WHERE id = ?', $_POST['posts']['slug'], $_POST['posts']['title'], $_POST['posts']['content'], $id);
 		if ($rowsAffected!==false) {
-			$_SESSION['flash']['success'] = 'Post saved';
 			Router::redirect('admin/posts/index');
 		}
 	}

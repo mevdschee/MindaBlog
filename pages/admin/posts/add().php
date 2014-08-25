@@ -6,7 +6,6 @@ if (!empty($_POST)) {
 	if (!isset($errors)) {
 		$id = DB::insert('INSERT INTO posts (slug,title,content,user_id) VALUES (?, ?, ?, ?)', $_POST['posts']['slug'], $_POST['posts']['title'], $_POST['posts']['content'], $_SESSION['user']['id']);
 		if ($id) {
-			$_SESSION['flash']['success'] = 'Post saved';
 			Router::redirect('admin/posts/index');
 		}
 	}

@@ -2,6 +2,7 @@
 .project
 .settings
 composer.phar
+phpunit.phar
 tools/adminer.php
 config/config.php
 

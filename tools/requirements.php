@@ -113,10 +113,17 @@ if (!file_exists('tools/adminer.php')) {
 if (!file_exists('composer.phar')) {
 	echo "INFO: File 'composer.phar' not found, downloading...\n";
 	file_put_contents('composer.phar',file_get_contents('https://getcomposer.org/installer'));
-	include 'composer.phar';
 }
 if (!file_exists('composer.phar')) {
 	echo "ERROR: Could not write 'composer.phar'\n";
+	exit(1);
+}
+if (!file_exists('phpunit.phar')) {
+	echo "INFO: File 'phpunit.phar' not found, downloading...\n";
+	file_put_contents('phpunit.phar',file_get_contents('https://phar.phpunit.de/phpunit.phar'));
+}
+if (!file_exists('phpunit.phar')) {
+	echo "ERROR: Could not write 'phpunit.phar'\n";
 	exit(1);
 }
 exit(0);

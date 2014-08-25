@@ -196,7 +196,18 @@ class DB
   {
     return forward_static_call_array('DB::update', func_get_args());
   }
-    
+
+  public static function query($query)
+  {
+    $args = func_get_args();
+    if (func_num_args() > 1) {
+      array_splice($args,1,0,array(str_repeat('s', count($args)-1)));
+    }
+    $result = forward_static_call_array('DB::selectTyped', $args);
+    if ($result!==false) return true;
+    return $result;
+  }
+  
   // Undocumented
   public static function handle()
   {
@@ -204,16 +215,4 @@ class DB
     return static::$mysqli;
   }
   
-  // Undocumented
-  public static function options()
-  {
-    return call_user_func_array(array(static::$mysqli, 'options'), func_get_args());
-  }
-   
-  // Undocumented
-  public static function close()
-  {
-    return static::$mysqli->close();
-  }
-
 }

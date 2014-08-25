@@ -13,7 +13,7 @@ CREATE TABLE `posts` (
   `title` text COLLATE utf8_bin NOT NULL,
   `content` mediumtext COLLATE utf8_bin NOT NULL,
   `created` datetime NOT NULL,
-  `published` datetime DEFAULT NULL,
+  `published` date DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),

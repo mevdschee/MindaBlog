@@ -9,4 +9,3 @@ foreach (array_keys($data) as $i) {
 	$data[$i]['posts']['html'] = trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['html']));
 	$data[$i]['posts']['more_html'] = trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['more_html']));
 }
-d($data);

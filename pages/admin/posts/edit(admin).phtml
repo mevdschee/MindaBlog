@@ -16,15 +16,13 @@
   <h1>Edit post</h1>
 </div>
 <form method="post">
-
 	<div class="form-group">
 	    <label class="control-label" for="posts[published]">Published</label>
-		<div class="input-group date">
+		<div class="input-group">
     		<input class="form-control" name="posts[published]" type="text" value="<?php e($_POST['posts']['published']); ?>" id="posts[published]" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-today-highlight="1" data-date-autoclose="1">
     		<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
     	</div>
 	</div>
-	
 	<div class="form-group <?php echo isset($errors['posts[slug]'])?'has-error':'' ?>">
 	    <label class="control-label" for="posts[slug]">Slug</label>
 	    <div class="input-group">

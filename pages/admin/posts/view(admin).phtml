@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>View post</h1>
+</div>
+<div class="list-group">
+  <a href="admin/posts/edit/<?php e($data['posts']['id']);?>" class="list-group-item">
+	<h4 class="list-group-item-heading">Properties</h4>
+    <br/>
+	<dl class="dl-horizontal">
+  		<dt>Published</dt>
+  		<dd><?php e($data['posts']['published']);?></dd>
+  	</dl>
+  	<dl class="dl-horizontal">
+  		<dt>Title</dt>
+  		<dd><?php e($data['posts']['title']);?></dd>
+  	</dl>
+  	<dl class="dl-horizontal">
+  		<dt>Slug</dt>
+  		<dd>/<?php e($data['posts']['slug']);?></dd>
+  	</dl>
+  	<dl class="dl-horizontal">
+  		<dt>Word count</dt>
+  		<dd><?php e($data['posts']['word_count']);?></dd>
+  	</dl>
+  	<dl class="dl-horizontal">
+  		<dt>Author</dt>
+  		<dd><?php e($data['users']['username']);?></dd>
+  	</dl>
+  </a>
+  <a href="admin/posts/edit/<?php e($data['posts']['id']);?>" class="list-group-item">
+  	<span class="badge">15</span>
+  	<h4 class="list-group-item-heading">Comments</h4>
+  </a>
+</div>
+<p><a class="btn btn-primary" href="admin/posts/add">Add</a></p>

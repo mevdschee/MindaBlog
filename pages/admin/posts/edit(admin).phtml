@@ -40,7 +40,6 @@
   		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="10" id="posts[content]"><?php e($_POST['posts']['content']); ?></textarea>
     </div>
     <div class="form-group">
-		<a class="btn btn-danger pull-right" href="admin/posts/delete/<?php echo $id; ?>">Delete</a>
     	<button class="btn btn-primary" type="submit">Save</button>
 	</div>
 	<?php Session::getCsrfInput(); ?>

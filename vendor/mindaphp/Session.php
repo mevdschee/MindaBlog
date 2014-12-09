@@ -22,9 +22,54 @@ class Session
   
   protected static function setCsrfToken()
   {
-  	if (!isset($_SESSION[static::$csrfSessionKey])) {
-  		$_SESSION[static::$csrfSessionKey] = rand(0, PHP_INT_MAX);
+  	if (isset($_SESSION[static::$csrfSessionKey])) return;
+  	
+  	$strlen = function($binary_string) {
+  		if (function_exists('mb_strlen')) {
+  			return mb_strlen($binary_string, '8bit');
+  		}
+  		return strlen($binary_string);
+  	};
+  	
+  	$raw_salt_len = 16; 
+  	$buffer = '';
+  	$buffer_valid = false;
+  	if (function_exists('mcrypt_create_iv') && !defined('PHALANGER')) {
+  		$buffer = mcrypt_create_iv($raw_salt_len, MCRYPT_DEV_URANDOM);
+  		if ($buffer) {
+  			$buffer_valid = true;
+  		}
   	}
+  	if (!$buffer_valid && function_exists('openssl_random_pseudo_bytes')) {
+  		$buffer = openssl_random_pseudo_bytes($raw_salt_len);
+  		if ($buffer) {
+  			$buffer_valid = true;
+  		}
+  	}
+  	if (!$buffer_valid && @is_readable('/dev/urandom')) {
+  		$f = fopen('/dev/urandom', 'r');
+  		$read = PasswordCompat\binary\_strlen($buffer);
+  		while ($read < $raw_salt_len) {
+  			$buffer .= fread($f, $raw_salt_len - $read);
+  			$read = PasswordCompat\binary\_strlen($buffer);
+  		}
+  		fclose($f);
+  		if ($read >= $raw_salt_len) {
+  			$buffer_valid = true;
+  		}
+  	}
+  	if (!$buffer_valid || $strlen($buffer) < $raw_salt_len) {
+  		$bl = $strlen($buffer);
+  		for ($i = 0; $i < $raw_salt_len; $i++) {
+  			if ($i < $bl) {
+  				$buffer[$i] = $buffer[$i] ^ chr(mt_rand(0, 255));
+  			} else {
+  				$buffer .= chr(mt_rand(0, 255));
+  			}
+  		}
+  	}
+  	
+  	$_SESSION[static::$csrfSessionKey] = bin2hex($buffer);
   }
   
   public static function start()

@@ -31,36 +31,36 @@ class Session
   		return strlen($binary_string);
   	};
   	
-  	$raw_salt_len = 16; 
+  	$raw_csrf_len = 16; 
   	$buffer = '';
   	$buffer_valid = false;
   	if (function_exists('mcrypt_create_iv') && !defined('PHALANGER')) {
-  		$buffer = mcrypt_create_iv($raw_salt_len, MCRYPT_DEV_URANDOM);
+  		$buffer = mcrypt_create_iv($raw_csrf_len, MCRYPT_DEV_URANDOM);
   		if ($buffer) {
   			$buffer_valid = true;
   		}
   	}
   	if (!$buffer_valid && function_exists('openssl_random_pseudo_bytes')) {
-  		$buffer = openssl_random_pseudo_bytes($raw_salt_len);
+  		$buffer = openssl_random_pseudo_bytes($raw_csrf_len);
   		if ($buffer) {
   			$buffer_valid = true;
   		}
   	}
   	if (!$buffer_valid && @is_readable('/dev/urandom')) {
   		$f = fopen('/dev/urandom', 'r');
-  		$read = PasswordCompat\binary\_strlen($buffer);
-  		while ($read < $raw_salt_len) {
-  			$buffer .= fread($f, $raw_salt_len - $read);
-  			$read = PasswordCompat\binary\_strlen($buffer);
+  		$read = $strlen($buffer);
+  		while ($read < $raw_csrf_len) {
+  			$buffer .= fread($f, $raw_csrf_len - $read);
+  			$read = $strlen($buffer);
   		}
   		fclose($f);
-  		if ($read >= $raw_salt_len) {
+  		if ($read >= $raw_csrf_len) {
   			$buffer_valid = true;
   		}
   	}
-  	if (!$buffer_valid || $strlen($buffer) < $raw_salt_len) {
+  	if (!$buffer_valid || $strlen($buffer) < $raw_csrf_len) {
   		$bl = $strlen($buffer);
-  		for ($i = 0; $i < $raw_salt_len; $i++) {
+  		for ($i = 0; $i < $raw_csrf_len; $i++) {
   			if ($i < $bl) {
   				$buffer[$i] = $buffer[$i] ^ chr(mt_rand(0, 255));
   			} else {
@@ -115,6 +115,7 @@ class Session
   public static function getCsrfInput()
   {
   	if (!static::$initialized) static::initialize();
+  	static::setCsrfToken();
   	echo '<input type="hidden" name="'.static::$csrfSessionKey.'" value="'.$_SESSION[static::$csrfSessionKey].'"/>';
   }
   

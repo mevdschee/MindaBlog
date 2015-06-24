@@ -27,9 +27,9 @@ class Auth
     
     static function logout()
     {
-      if (!isset($_SESSION['user'])) return false;
-      unset($_SESSION['user']);
-      unset($_SESSION['csrf_token']);
+      foreach ($_SESSION as $key=>$value) {
+        if ($key!='debugger') unset($_SESSION[$key]);
+      }
       session_regenerate_id(true);
       return true;
     }
@@ -53,6 +53,14 @@ class Auth
     			static::$usernameField);
     	$password = password_hash($password, PASSWORD_DEFAULT);
     	return DB::update($query,$password,$username);
+    }
+    
+    static function exists($username)
+    {
+    	$query = sprintf('select `id` from `%s` where `%s`=?',
+    			static::$usersTable,
+    			static::$usernameField);
+    	return DB::selectValue($query,$username);
     }
     
 }

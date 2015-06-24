@@ -13,10 +13,11 @@ class DB
   public static $socket=null;
    
   protected static $mysqli = null;
+  protected static $closed = false;
   
   protected static function connect()
   {
-    if (class_exists('Router',false) && Router::getPhase()!='action') {
+    if (static::$closed) {
       static::error('Database can only be used in MindaPHP action');
     }
     if (!static::$mysqli) {
@@ -25,6 +26,7 @@ class DB
       while (isset($args[count($args)-1]) && $args[count($args)-1] !== null) array_pop($args);
       static::$mysqli = $reflect->newInstanceArgs($args);
       if (mysqli_connect_errno()) static::error(mysqli_connect_error());
+      if (!static::$mysqli->set_charset('utf8')) static::error(mysqli_error());
     }
   }
     
@@ -134,10 +136,13 @@ class DB
     }
     $query->execute();
     if ($query->errno) {
+      $query->close();
       return static::error(static::$mysqli->error);
     }
     if ($query->affected_rows > -1) {
-      return $query->affected_rows;
+      $result = $query->affected_rows;
+      $query->close();
+      return $result;
     }
     $params = array();
     $meta = $query->result_metadata();
@@ -199,6 +204,15 @@ class DB
     $result = forward_static_call_array('DB::selectTyped', $args);
     if ($result!==false) return true;
     return $result;
+  }
+  
+  public static function close()
+  {
+  	if (static::$mysqli) {
+  	  static::$mysqli->close();
+  	  static::$mysqli = null;
+  	}
+  	static::$closed = true;
   }
   
   // Undocumented

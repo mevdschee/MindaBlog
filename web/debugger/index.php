@@ -45,7 +45,8 @@ class DebugView
 		$html[] ='<li><a class="debug-request-execution" href="#debug-request-'.$i.'-execution" data-toggle="tab">Execution</a></li>';
 		$html[] ='<li><a class="debug-request-session" href="#debug-request-'.$i.'-session" data-toggle="tab">Session</a></li>';
 		$html[] ='<li><a class="debug-request-queries" href="#debug-request-'.$i.'-queries" data-toggle="tab">Queries</a></li>';
-		$html[] ='<li><a class="debug-request-queries" href="#debug-request-'.$i.'-api_calls" data-toggle="tab">API calls</a></li>';
+		$html[] ='<li><a class="debug-request-api_calls" href="#debug-request-'.$i.'-api_calls" data-toggle="tab">API calls</a></li>';
+		$html[] ='<li><a class="debug-request-cache" href="#debug-request-'.$i.'-cache" data-toggle="tab">Cache</a></li>';
 		$html[] ='<li><a class="debug-request-logging" href="#debug-request-'.$i.'-logging" data-toggle="tab">Logging</a></li>';
 		$html[] ='</ul>';
 		return implode("\n",$html);
@@ -262,7 +263,7 @@ class DebugView
 			$count++;
 			$total+= $query['duration'];
 			$html[] = '<tr>';
-			$html[] = '<td><a href="#" onclick="$(\'#debug-request-'.$requestId.'-query-'.$i.'\').toggle(); return false;">'.$query['query'].'</a>';
+			$html[] = '<td><a href="#" onclick="$(\'#debug-request-'.$requestId.'-query-'.$i.'\').toggle(); return false;">'.$query['query'].'</a></td>';
 			$html[] = '<td>'.sprintf('%.2f ms',$query['duration']*1000).'</td>';
 			$html[] = '</tr>';
 			$html[] = '<tr style="display:none;" id="debug-request-'.$requestId.'-query-'.$i.'"><td colspan="5">';
@@ -302,7 +303,7 @@ class DebugView
 				$shortUrl = $url;
 			}
 			$html[] = '<tr>';
-			$html[] = '<td><a href="#" onclick="$(\'#debug-request-'.$requestId.'-api_call-'.$i.'\').toggle(); return false;">'.$call['method'].' '.$shortUrl.'<span class="badge pull-right">'.$call['status'].'</span></a>';
+			$html[] = '<td><a href="#" onclick="$(\'#debug-request-'.$requestId.'-api_call-'.$i.'\').toggle(); return false;">'.$call['method'].' '.$shortUrl.'<span class="badge pull-right">'.$call['status'].'</span></a></td>';
 			$html[] = '<td>'.sprintf('%.2f ms',$call['duration']*1000).'</td>';
 			$html[] = '</tr>';
 			$html[] = '<tr style="display:none;" id="debug-request-'.$requestId.'-api_call-'.$i.'"><td colspan="5">';
@@ -313,11 +314,12 @@ class DebugView
 			$tables = array();
 			$tables['details']=array();
 			$tables['details']['method']=$call['method'];
-			$tables['details']['url']='<a href="'.$url.'" target="_blank">'.$shortUrl.'</a>';
+			$tables['details']['url']='<a href="'.$url.'" target="_blank">Visit</a>';
 			$tables['details']['status']=$call['status'];
-			$tables['details']['data']=$call['data']?'<a href="data:text/plain;base64,'.base64_encode($call['data']).'" target="_blank">'.strlen($call['data']).' bytes</a>':'-';
-			$tables['details']['result']=$call['result']?'<a href="data:text/plain;base64,'.base64_encode($call['result']).'" target="_blank">View ('.strlen($call['result']).' bytes)</a>':'-';
-			$tables['details']['duration']=sprintf('%.2f ms',$call['duration']*1000);
+			$tables['details']['data_sent']=$call['data']?'<a href="data:text/plain;base64,'.base64_encode($call['data']).'" target="_blank">'.strlen($call['data']).' bytes</a>':'-';
+			$tables['details']['data_received']=$call['result']?'<a href="data:text/plain;base64,'.base64_encode($call['result']).'" target="_blank">View ('.strlen($call['result']).' bytes)</a>':'-';
+			$tables['timing'] = array_map(function ($v) { return sprintf('%.2f ms',$v*1000); },$call['timing']);
+
 			$tables['options']=$call['options'];
 			$tables['headers']=$call['headers'];
 			foreach ($tables as $table=>$fields) {
@@ -335,6 +337,32 @@ class DebugView
 			$html[] = '</td></tr>';
 		}
 		$html[] = '<tr><td><strong>'.$count.' API calls</strong></td>';
+		$html[] = '<td>'.sprintf('%.2f ms',$total*1000).'</td></tr>';
+		$html[] = '</tbody></table>';
+		$html[] = '</div>';
+		return implode("\n",$html);
+	}
+	
+	static function getCacheTabPane($requestId,$request)
+	{
+		$html = array();
+		$html[] = '<div class="tab-pane" id="debug-request-'.$requestId.'-cache">';
+		$html[] = '<table class="table"><thead>';
+		$html[] = '<tr><th>Command</th><th>Result</th><th class="">Duration</th></tr>';
+		$html[] = '</thead><tbody>';
+		$count = 0;
+		$total = 0;
+		foreach ($request['cache'] as $i=>$call) {
+			$count++;
+			$total+= $call['duration'];
+			
+			$html[] = '<tr>';
+			$html[] = '<td>'.strtoupper($call['command']).' '.implode(' ',$call['arguments']).'</td>';
+			$html[] = '<td>'.$call['result'].'</td>';
+			$html[] = '<td>'.sprintf('%.2f ms',$call['duration']*1000).'</td>';
+			$html[] = '</tr>';
+		}
+		$html[] = '<tr><td colspan="2"><strong>'.$count.' commands</strong></td>';
 		$html[] = '<td>'.sprintf('%.2f ms',$total*1000).'</td></tr>';
 		$html[] = '</tbody></table>';
 		$html[] = '</div>';
@@ -404,6 +432,7 @@ Session::start();
               <?php echo DebugView::getSessionTabPane($i,$request); ?>
               <?php echo DebugView::getQueriesTabPane($i,$request); ?>
               <?php echo DebugView::getApiCallsTabPane($i,$request); ?>
+              <?php echo DebugView::getCacheTabPane($i,$request); ?>
               <?php echo DebugView::getLoggingTabPane($i,$request); ?>
             </div>
           </div>
@@ -416,10 +445,10 @@ Session::start();
             classes.push($(this).attr('class'));
           });
           $(classes).each(function (i,c) {
-        	$('a[data-toggle="tab"].'+c).on('shown.bs.tab', function (e) {
-          	  $('a[data-toggle="tab"].'+c).each(function (e) {
-        	    $(this).tab('show');
-        	  });
+        	$('a[data-toggle="tab"].'+c).on('shown.bs.tab', function () {
+              $('a[data-toggle="tab"].'+c).each(function () {
+            	$(this).tab('show');
+      	      });
             });
           });
         });

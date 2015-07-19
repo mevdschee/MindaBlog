@@ -3,8 +3,9 @@ $files = 0;
 $created = 0;
 $updated = 0;
 $url = "https://github.com/mevdschee/MindaPHP/archive/master.zip";
+$zipDir = 'MindaPHP-master/';
 $archive = __DIR__.'/master.zip';
-$path = __DIR__.'/..';
+$path = realpath(__DIR__.'/..');
 $prefixes = array(
   '.htaccess',
   'web/.htaccess',
@@ -15,9 +16,9 @@ $prefixes = array(
 );
 
 echo "Downloading: $url\n";
-if (!copy($url,$archive)) {
-	die("Error loading URL ($url)\n");
-}
+//if (!copy($url,$archive)) {
+	//die("Error loading URL ($url)\n");
+//}
 echo "Unzipping: $archive\n";
 
 $zip = new ZipArchive;
@@ -28,7 +29,7 @@ if (!$zip->open(__DIR__.'/master.zip') === true) {
 	 
 for($i = 0; $i < $zip->numFiles; $i++) {
 
-	$filename = substr($zip->getNameIndex($i),strlen('MindaPHP-master/'));
+	$filename = substr($zip->getNameIndex($i),strlen($zipDir));
 	
 	$match = false;
 	foreach ($prefixes as $prefix) {
@@ -47,7 +48,10 @@ for($i = 0; $i < $zip->numFiles; $i++) {
 		$created++;
 	}
 	
-	if (!$zip->extractTo($path, array($filename))) {
+	$dir = pathinfo($filename,PATHINFO_DIRNAME);
+	$base = pathinfo($filename,PATHINFO_BASENAME);
+	
+	if (!$zip->extractTo("$path/$dir", array($zipDir.$filename))) {
 		echo "$filename (ERROR)\n";
 	}
 	

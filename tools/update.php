@@ -49,9 +49,9 @@ for($i = 0; $i < $zip->numFiles; $i++) {
 	}
 	
 	$dir = pathinfo($filename,PATHINFO_DIRNAME);
-	$base = pathinfo($filename,PATHINFO_BASENAME);
 	
-	if (!$zip->extractTo("$path/$dir", array($zipDir.$filename))) {
+	if (!file_exists("$path/$dir")) mkdir("$path/$dir",0755,true);
+	if (!copy("zip://".$archive."#".$zipDir.$filename, "$path/$filename")) {
 		echo "$filename (ERROR)\n";
 	}
 	

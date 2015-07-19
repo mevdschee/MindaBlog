@@ -16,16 +16,12 @@ $prefixes = array(
 );
 
 echo "Downloading: $url\n";
-//if (!copy($url,$archive)) {
-	//die("Error loading URL ($url)\n");
-//}
+if (!copy($url,$archive)) die("Error loading URL ($url)\n");
 echo "Unzipping: $archive\n";
 
 $zip = new ZipArchive;
 
-if (!$zip->open(__DIR__.'/master.zip') === true) {
-	die("Error opening archive ($archive)\n");
-}
+if ($zip->open($archive)!==true) die("Error opening archive ($archive)\n");
 	 
 for($i = 0; $i < $zip->numFiles; $i++) {
 
@@ -50,8 +46,10 @@ for($i = 0; $i < $zip->numFiles; $i++) {
 	
 	$dir = pathinfo($filename,PATHINFO_DIRNAME);
 	
-	if (!file_exists("$path/$dir")) mkdir("$path/$dir",0755,true);
-	if (!copy("zip://".$archive."#".$zipDir.$filename, "$path/$filename")) {
+	if (substr($filename,-1)=='/') $success = file_exists("$path/$dir") || mkdir("$path/$dir",0755,true);
+	else $success = copy("zip://".$archive."#".$zipDir.$filename, "$path/$filename");
+	
+	if (!$success) {
 		echo "$filename (ERROR)\n";
 	}
 	

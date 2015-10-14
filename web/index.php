@@ -8,7 +8,7 @@ require '../config/config.php';
 // Load the routes
 require '../config/router.php';
 // Register shortcut functions
-function e($string,$raw=false) { echo $raw?$string:htmlspecialchars($string,ENT_QUOTES,'UTF-8'); }
+function e($string) { echo htmlspecialchars($string,ENT_QUOTES,'UTF-8'); }
 function d() { return call_user_func_array('Debugger::debug',func_get_args()); }
 
 // Start the firewall
@@ -17,8 +17,10 @@ Firewall::start();
 // Start the session
 Session::start();
 
-// Load the action into body
+// Analyze the PHP code
+if (Debugger::$enabled) Analyzer::execute();
 
+// Load the action into body
 ob_start();
 if (Router::getTemplateAction()) {
 	require Router::getTemplateAction();
@@ -51,12 +53,6 @@ Session::end();
 DB::close();
 
 if (Router::getTemplateView()) {
-	if (Debugger::$enabled) {
-		$tokens = token_get_all(file_get_contents(Router::getView()));
-		foreach ($tokens as $token) {
-			if (is_int($token[0]) && token_name($token[0])=='T_ECHO') die("Echo not allowed in on line $token[2] in ".Router::getView());
-		}
-	}
   Buffer::start('html');
   require Router::getView();
   // Show developer toolbar

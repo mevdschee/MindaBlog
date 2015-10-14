@@ -6,6 +6,6 @@ foreach (array_keys($data) as $i) {
 	} else {
 		list($data[$i]['posts']['html'],$data[$i]['posts']['more_html']) = array($data[$i]['posts']['content'], '');
 	}
-	$data[$i]['posts']['html'] = trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['html']));
+	Buffer::set("content[$i]",trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['html'])));
 	$data[$i]['posts']['more_html'] = $data[$i]['posts']['more_html']?true:false;
 }

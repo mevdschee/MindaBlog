@@ -7,5 +7,5 @@ if (preg_match('/\r?\n---+\r?\n/', $data['posts']['content'])) {
 } else {
 	list($data['posts']['html'],$data['posts']['more_html']) = array($data['posts']['content'], '');
 }
-$data['posts']['html'] = Michelf\Markdown::defaultTransform($data['posts']['html']);
-$data['posts']['more_html'] = Michelf\Markdown::defaultTransform($data['posts']['more_html']);
+Buffer::set('content',Michelf\Markdown::defaultTransform($data['posts']['html']));
+Buffer::set('more_content',Michelf\Markdown::defaultTransform($data['posts']['more_html']));

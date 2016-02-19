@@ -9,3 +9,4 @@ foreach (array_keys($data) as $i) {
 	Buffer::set("content[$i]",trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['html'])));
 	$data[$i]['posts']['more_html'] = $data[$i]['posts']['more_html']?true:false;
 }
+$title = 'Home';

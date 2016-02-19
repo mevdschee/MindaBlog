@@ -1,5 +1,3 @@
--- Adminer 4.1.0 MySQL dump
-
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
@@ -23,7 +21,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `posts` (`id`, `slug`, `tags`, `title`, `content`, `word_count`, `modified`, `published`, `user_id`) VALUES
-(22,	'2014-test',	'',	'test',	'test',	0,	'0000-00-00 00:00:00',	'2014-08-28',	1);
+(1,	'2016-test',	'',	'Hello World!',	'This is the first post\n---\nthat is not so very long.',	0,	'0000-00-00 00:00:00',	'2016-01-01',	1);
 
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
@@ -35,20 +33,4 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `settings` (`id`, `key`, `value`, `comment`) VALUES
-(1,	'title',	'MindaBlog!',	'');
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_bin NOT NULL,
-  `password` varchar(255) COLLATE utf8_bin NOT NULL,
-  `salt` varchar(255) COLLATE utf8_bin NOT NULL,
-  `created` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-INSERT INTO `users` (`id`, `username`, `password`, `salt`, `created`) VALUES
-(1,	'test',	'c32ac6310706acdadea74c901c3f08fe06c44c61',	'd7e8541887cb9b3461d7364e4e7c8b7d',	'2014-05-28 22:58:22');
-
--- 2014-05-31 00:32:03
+(1,	'title',	'TQdev.com',	'');

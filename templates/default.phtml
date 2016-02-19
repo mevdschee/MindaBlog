@@ -2,7 +2,7 @@
 <html>
   <head>
     <base href="<?php e(Router::getBaseUrl()); ?>">
-    <title>MindaBlog</title>
+    <title><?php e($_SESSION['settings']['title'].' - '.$title) ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico">
@@ -10,13 +10,14 @@
   </head>
   <body>
     <div class="menu">
-    <p><img src="img/maurits.jpg" alt="Maurits van der Schee"/><br/>Maurits van der Schee</p>        
-    <p>
-      <a href="admin">Admin area</a><br/>
-    </p>
-  </div>
-  <div class="body">
-    <?php Buffer::get('html'); ?>
-  </div>
-</body>
+        <h1><a href="/" style="color: gray; text-decoration:none;"><strong style="font-size: 300%;">TQ</strong><br/>dev.com</a></h1>
+        <p><em>Blog about software development</em></p>        
+        <p>
+        <a href="admin">Admin area</a><br/>
+        </p>
+    </div>
+    <div class="body">
+        <?php Buffer::get('html'); ?>
+    </div>
+    </body>
 </html>

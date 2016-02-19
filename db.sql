@@ -22,7 +22,7 @@ CREATE TABLE `posts` (
   CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-INSERT INTO `posts` (`id`, `slug`, `tags`, `title`, `content`, `words`, `modified`, `published`, `user_id`) VALUES
+INSERT INTO `posts` (`id`, `slug`, `tags`, `title`, `content`, `word_count`, `modified`, `published`, `user_id`) VALUES
 (22,	'2014-test',	'',	'test',	'test',	0,	'0000-00-00 00:00:00',	'2014-08-28',	1);
 
 DROP TABLE IF EXISTS `settings`;

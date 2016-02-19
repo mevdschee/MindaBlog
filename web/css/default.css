@@ -1,5 +1,4 @@
 @CHARSET "UTF-8";
-.menu  { float: left; padding: 20px; width: 160px; }
-.body  { margin-left: 200px; padding: 20px; border-left: 1px solid silver;}
-.title { background-color: #aaaaff; padding: 20px; color: white;}
-td,th  { padding-right: 15px;}
+html, body { font-family: Georgia, 'Times New Roman', Times, serif } 
+.menu  { float: left; padding: 0px 20px; width: 200px; }
+.body  { margin-left: 240px; padding: 20px; }

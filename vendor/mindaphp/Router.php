@@ -11,8 +11,8 @@ class Router
   protected static $script = null;
   
   public static $baseUrl = '/';
-  public static $pageRoot = '../pages/';
-  public static $templateRoot = '../templates/';
+  public static $pageRoot = 'pages/';
+  public static $templateRoot = 'templates/';
   public static $allowGet = false;
   public static $executeRedirect = true;
   
@@ -60,7 +60,7 @@ class Router
   public static function redirect($url,$permanent=false)
   {
   	if (!static::$initialized) static::initialize();
-    $url = static::$baseUrl . $url;
+    $url = parse_url($url, PHP_URL_HOST)?$url:static::$baseUrl.$url;
     $status = $permanent?301:302;
   	if (Debugger::$enabled) {
   		Debugger::set('redirect',$url);
@@ -72,6 +72,15 @@ class Router
   	} else {
   		static::$redirect = $url;
   	}
+  }
+  
+  public static function json($object)
+  {
+  	if (Debugger::$enabled) {
+  		Debugger::end('json');
+  	}
+	header('Content-Type: application/json');
+	die(json_encode($object));
   }
   
   protected static function route()

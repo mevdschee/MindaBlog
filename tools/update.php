@@ -1,14 +1,14 @@
 <?php
+// Change directory to project root
+chdir(__DIR__.'/..');
 $files = 0;
 $created = 0;
 $updated = 0;
 $url = "https://github.com/mevdschee/MindaPHP/archive/master.zip";
 $zipDir = 'MindaPHP-master/';
-$archive = __DIR__.'/master.zip';
-$path = realpath(__DIR__.'/..');
+$archive = 'tools/master.zip';
+$path = realpath('.');
 $prefixes = array(
-  '.htaccess',
-  'web/.htaccess',
   'web/index.php',
   'web/debugger/',
   'vendor/mindaphp/',

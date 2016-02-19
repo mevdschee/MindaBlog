@@ -11,10 +11,23 @@
   <body>
     <div class="menu">
         <h1><a href="/" style="color: gray; text-decoration:none;"><strong style="font-size: 300%;">TQ</strong><br/>dev.com</a></h1>
-        <p><em>Blog about software development</em></p>        
-        <p>
-        <a href="admin">Admin area</a><br/>
-        </p>
+        <p><em>Blog about software development</em></p>
+        <h3>Popular posts</h3>
+        <ul>
+          <?php foreach ($popular as $slug => $title): ?>
+            <li><a href="<?php e($slug); ?>"><?php e($title); ?></a></li>
+          <?php endforeach; ?>
+        </ul>                
+        <h3>Latest posts</h3>
+        <ul>
+          <?php foreach ($latest as $slug => $title): ?>
+            <li><a href="<?php e($slug); ?>"><?php e($title); ?></a></li>
+          <?php endforeach; ?>
+        </ul>                
+        <h3>Links</h3>
+        <ul>
+            <li><a href="https://github.com/mevdschee">Github</a></li>
+        </ul>            
     </div>
     <div class="body">
         <?php Buffer::get('html'); ?>

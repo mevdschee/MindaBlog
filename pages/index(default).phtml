@@ -1,4 +1,4 @@
 <h2><a href="<?php e(urlencode($data['posts']['slug']));?>"><?php e($data['posts']['title']);?></a></h2>
 <?php Buffer::get('content'); ?>
-<hr style="border: 0; border-bottom: 1px dashed #ccc;"/>
+<?php if ($after): ?><hr style="border: 0; border-bottom: 1px dashed #ccc;"/><?php endif ?>
 <?php Buffer::get('more_content'); ?>

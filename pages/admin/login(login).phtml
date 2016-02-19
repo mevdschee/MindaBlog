@@ -1,12 +1,11 @@
 <h1>Login</h1>
 <form method="post">
-Username<br/>
-<input name="username"/><br/>
-Password<br/>
-<input type="password" name="password"/><br/>
-<br/>
-<input type="submit"/><br/>
-<?php e($error); ?>
+<p style="color: red;"><?php e($error); ?></p>
+<p>Username<br/>
+<input name="username"/></p>
+<p>Password<br/>
+<input type="password" name="password"/></p>
+<p><input type="submit"/></p>
 <?php Session::getCsrfInput(); ?>
 </form>
 

@@ -4,9 +4,7 @@ if (!isset($_SESSION['settings'])) {
     $_SESSION['settings'] = DB::selectPairs('select `key`,`value` from settings');
 }
 
-if (!DB::selectOne('select id from `unique_visitors` where `ip`=? and `day`=DATE(NOW())',$_SERVER['REMOTE_ADDR'])) {
-    DB::insert('insert into `unique_visitors` (`ip`,`day`) values (?,NOW())',$_SERVER['REMOTE_ADDR']);
-}
+DB::insert('insert into `unique_visitors` (`ip`,`day`,`requests`) values (?,DATE(NOW()),1) ON DUPLICATE KEY UPDATE `requests`=`requests`+1;',$_SERVER['REMOTE_ADDR']);
 
 $stats = Cache::get("stats");
 if (!$stats) { 

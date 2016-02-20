@@ -29,6 +29,7 @@ CREATE TABLE `unique_views` (
   `posts_id` int(11) NOT NULL,
   `ip` varchar(15) COLLATE utf8_bin NOT NULL,
   `day` date NOT NULL,
+  `requests` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `posts_id_ip_day` (`posts_id`,`ip`,`day`),
   CONSTRAINT `unique_views_ibfk_1` FOREIGN KEY (`posts_id`) REFERENCES `posts` (`id`)
@@ -39,6 +40,7 @@ CREATE TABLE `unique_visitors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(15) COLLATE utf8_bin NOT NULL,
   `day` date NOT NULL,
+  `requests` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ip_day` (`ip`,`day`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

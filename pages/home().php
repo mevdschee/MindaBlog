@@ -1,5 +1,5 @@
 <?php
-$data = DB::select('select * from posts where published is not null and published < NOW() order by published desc');
+$data = DB::select('select * from posts where published is not null and published < NOW() order by published desc limit 5');
 foreach (array_keys($data) as $i) {
 	if (preg_match('/\(?\.\.\.+\)/', $data[$i]['posts']['content'], $matches, PREG_OFFSET_CAPTURE)) {
 		$data[$i]['posts']['html'] = substr($data[$i]['posts']['content'], 0, $matches[0][1]).'...';

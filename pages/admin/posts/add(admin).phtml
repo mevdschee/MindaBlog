@@ -1,17 +1,17 @@
-<?php echo Buffer::start('head'); ?>
+<?php Buffer::start('head'); ?>
     <!-- Markdown -->
     <script src="js/markdown.js"></script>
-        
+
     <!-- Bootstrap Markdown -->
     <link href="css/bootstrap-markdown.min.css" rel="stylesheet" media="screen">
     <script src="js/bootstrap-markdown.js"></script>
-<?php echo Buffer::end('head'); ?>
+<?php Buffer::end('head'); ?>
 <div class="page-header">
   <h1>New post</h1>
 </div>
 <form method="post">
 	<?php if (isset($errors['posts[slug]'])): ?>
-	<div class="form-group <?php echo isset($errors['posts[slug]'])?'has-error':'' ?>">
+	<div class="form-group <?php e(isset($errors['posts[slug]'])?'has-error':'') ?>">
 	    <label class="control-label" for="posts[slug]">Slug</label>
   		<div class="input-group">
         	<div class="input-group-addon">/</div>
@@ -32,4 +32,4 @@
     	<button class="btn btn-primary" type="submit">Add</button>
     </div>
     <?php Session::getCsrfInput(); ?>
-</form> 
+</form>

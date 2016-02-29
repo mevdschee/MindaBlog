@@ -1,5 +1,5 @@
 <?php
-$data = DB::select('select posts.id,posts.slug,posts.title,posts.word_count,posts.tags,posts.published,users.id,users.username from posts,users where posts.user_id = users.id order by published is not null,published desc');
+$data = DB::select('select posts.id,posts.slug,posts.title,posts.word_count,posts.tags,posts.published,users.id,users.username from posts,users where posts.user_id = users.id order by published is not null,modified desc,published desc');
 foreach (array_keys($data) as $i) {
 	$data[$i]['posts']['published_label_type'] = '';
 	$data[$i]['posts']['published_label_text'] = '';

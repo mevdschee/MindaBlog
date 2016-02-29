@@ -1,9 +1,9 @@
 <div class="page-header">
   <h1>Delete post</h1>
 </div>
-<form method="post" action="admin/posts/delete/<?php echo $id; ?>">
+<form method="post" action="admin/posts/delete/<?php e($id); ?>">
     <p>Are you sure?</p>
 	<button class="btn btn-danger pull-right" type="submit">Yes</button>
-	<a class="btn btn-primary" href="admin/posts/edit/<?php echo $id; ?>">No</a>
+	<a class="btn btn-primary" href="admin/posts/edit/<?php e($id); ?>">No</a>
 	<?php Session::getCsrfInput(); ?>
 </form>

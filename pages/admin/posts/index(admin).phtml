@@ -4,7 +4,7 @@
 <div class="list-group">
   <?php foreach ($data as $row): ?>
     <a href="admin/posts/view/<?php e($row['posts']['id']);?>" style="padding-left: 85px;" class="list-group-item">
-      <span class="badge">42</span><span class="label label-<?php e($row['posts']['published_label_type']); ?>" style="float:right; margin-right:5px;"><?php e($row['posts']['published_label_text']); ?></span>
+      <span class="badge"><?php e($row['unique_views']['requests']);?></span><span class="label label-<?php e($row['posts']['published_label_type']); ?>" style="float:right; margin-right:5px;"><?php e($row['posts']['published_label_text']); ?></span>
       <h3 style="float:left; position: absolute; left: 10px; top:-10px; width: 85px;"><?php e($row['posts']['published_day']); ?> <small><?php e($row['posts']['published_month']); ?></small></h3>
       <h4 class="list-group-item-heading"><?php e($row['posts']['title']);?> <small>/<?php e($row['posts']['slug']);?></small></h4>
       <p class="list-group-item-text">

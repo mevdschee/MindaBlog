@@ -1,2 +1,3 @@
-<h2><a href="<?php e(urlencode($data['posts']['slug']));?>"><?php e($data['posts']['title']);?></a></h2>
+<h2 class="title"><a href="<?php e(urlencode($data['posts']['slug']));?>"><?php e($data['posts']['title']);?></a></h2>
+<p class="details"><?php e(date("d M Y",strtotime($data['posts']['published'])));?> - by '<?php e(urlencode($data['users']['username']));?>'</p>
 <?php Buffer::get('content'); ?>

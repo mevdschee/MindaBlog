@@ -3,6 +3,6 @@
 <p class="details"><?php e(date("d M Y",strtotime($data[$i]['posts']['published'])));?> - by '<?php e(urlencode($data[$i]['users']['username']));?>'</p>
 <?php Buffer::get("content[$i]"); ?>
 <?php if ($data[$i]['posts']['more_html']): ?>
-  <a href="<?php e(urlencode($data[$i]['posts']['slug']));?>">Read full article...</a>
+  <a href="<?php e(urlencode($data[$i]['posts']['slug']));?>">Continue reading...</a>
 <?php endif; ?>
 <?php endforeach; ?>

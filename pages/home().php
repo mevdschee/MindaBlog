@@ -10,4 +10,4 @@ foreach (array_keys($data) as $i) {
 	}
 	Buffer::set("content[$i]",trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['html'])));
 }
-$title = 'Home';
+$title = $_SESSION['settings']['title'];

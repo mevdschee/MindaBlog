@@ -6,7 +6,7 @@ html, body, input, button { font-family: Georgia, 'Times New Roman', Times, seri
 .menu ul { list-style-type: none; padding-left: 0; margin-left: 0; margin-top: 10px; }
 .menu ul li { padding: 10px 0;}
 .body  { margin-left: 400px; padding: 15px 25px; max-width: 800px; min-width: 500px; }
-p,li { line-height: 150%; }
+p,li { line-height: 175%; }
 input,button { padding: 5px 10px; }
 body { max-width: 1200px ; min-width: 900px; margin-left: auto; margin-right: auto; }
 hr.continue { width:50%; border: 0; border-bottom: 1px dashed silver; margin: 50px auto 40px; }

@@ -1,8 +1,9 @@
-<?php foreach (array_keys($data) as $i): ?>
+<?php foreach (array_keys($data) as $n=>$i): ?>
 <h2 class="title"><a href="<?php e(urlencode($data[$i]['posts']['slug']));?>"><?php e($data[$i]['posts']['title']);?></a></h2>
 <p class="details"><?php e(date("d M Y",strtotime($data[$i]['posts']['published'])));?> - by '<?php e(urlencode($data[$i]['users']['username']));?>'</p>
 <?php Buffer::get("content[$i]"); ?>
 <?php if ($data[$i]['posts']['more_html']): ?>
   <a href="<?php e(urlencode($data[$i]['posts']['slug']));?>">Continue reading...</a>
 <?php endif; ?>
+<hr/<>
 <?php endforeach; ?>

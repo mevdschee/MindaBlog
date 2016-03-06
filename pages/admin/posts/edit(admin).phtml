@@ -14,7 +14,7 @@
     // save with ctrl-s
     $(window).keypress(function(event) {
         if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
-        $("form button[type=submit]").click();
+        $("form input[type=submit]").click();
         event.preventDefault();
         return false;
     });
@@ -49,7 +49,7 @@
   		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="30" id="posts[content]"><?php e($_POST['posts']['content']); ?></textarea>
     </div>
     <div class="form-group">
-    	<button class="btn btn-primary" type="submit">Save</button>
+    	<input class="btn btn-primary" type="submit" name="_save_and_continue" value="Save" /> <button class="btn btn-primary" type="submit">Save &amp; Exit</button>
     </div>
 	<?php Session::getCsrfInput(); ?>
 </form>

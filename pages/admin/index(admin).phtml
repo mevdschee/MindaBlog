@@ -1,2 +1,19 @@
 <h2>Dashboard</h2>
-<p>You must be logged in to see this.</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Visitors</th>
+      <th>Views</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($stats['visitors'] as $stat): ?>
+    <tr>
+      <td><?php e($stat['unique_visitors']['day']);?></td>
+      <td><?php e($stat['unique_visitors']['visitors']);?></td>
+      <td><?php e($stat['unique_visitors']['views']);?></td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>

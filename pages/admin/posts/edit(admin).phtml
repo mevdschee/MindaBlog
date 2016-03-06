@@ -10,6 +10,15 @@
     <!-- Bootstrap DatePicker -->
     <link href="css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
     <script src="js/bootstrap-datepicker.js"></script>
+    <script>
+    // save with ctrl-s
+    $(window).keypress(function(event) {
+        if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
+        $("form button[type=submit]").click();
+        event.preventDefault();
+        return false;
+    });
+    </script>
 
 <?php Buffer::end('head'); ?>
 <div class="page-header">
@@ -37,10 +46,10 @@
 	</div>
 	<div class="form-group">
 		<label class="control-label" for="posts[content]">Content</label>
-  		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="10" id="posts[content]"><?php e($_POST['posts']['content']); ?></textarea>
+  		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="30" id="posts[content]"><?php e($_POST['posts']['content']); ?></textarea>
     </div>
     <div class="form-group">
     	<button class="btn btn-primary" type="submit">Save</button>
-	</div>
+    </div>
 	<?php Session::getCsrfInput(); ?>
 </form>

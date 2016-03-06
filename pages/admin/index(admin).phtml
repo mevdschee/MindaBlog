@@ -5,6 +5,7 @@
       <th>Day</th>
       <th>Visitors</th>
       <th>Views</th>
+      <th>Post</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +14,7 @@
       <td><?php e($stat['unique_visitors']['day']);?></td>
       <td><?php e($stat['unique_visitors']['visitors']);?></td>
       <td><?php e($stat['unique_visitors']['views']);?></td>
+      <td><a href="<?php e($stats['posts'][$stat['unique_visitors']['day']]);?>"><?php e($stats['posts'][$stat['unique_visitors']['day']]);?></a></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

@@ -49,7 +49,7 @@
   		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="30" id="posts[content]"><?php e($_POST['posts']['content']); ?></textarea>
     </div>
     <div class="form-group">
-    	<input class="btn btn-primary" type="submit" name="_save_and_continue" value="Save" /> <button class="btn btn-primary" type="submit">Save &amp; Exit</button>
+    	<button class="btn btn-primary" type="submit">Save</button> <input class="btn" type="submit" name="_save_and_continue" value="Save" />
     </div>
 	<?php Session::getCsrfInput(); ?>
 </form>

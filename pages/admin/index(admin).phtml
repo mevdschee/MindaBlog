@@ -14,7 +14,11 @@
       <td><?php e($stat['unique_visitors']['day']);?></td>
       <td><?php e($stat['unique_visitors']['visitors']);?></td>
       <td><?php e($stat['unique_visitors']['views']);?></td>
-      <td><a href="<?php e($stats['posts'][$stat['unique_visitors']['day']]);?>"><?php e($stats['posts'][$stat['unique_visitors']['day']]);?></a></td>
+      <td>
+        <?php if (isset($stats['posts'][$stat['unique_visitors']['day']])): ?>
+          <a href="<?php e($stats['posts'][$stat['unique_visitors']['day']]);?>"><?php e($stats['posts'][$stat['unique_visitors']['day']]);?></a>
+        <?php endif; ?>
+      </td>
     </tr>
     <?php endforeach; ?>
   </tbody>

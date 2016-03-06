@@ -8,7 +8,7 @@
       <h3 style="float:left; position: absolute; left: 10px; top:-10px; width: 85px;"><?php e($row['posts']['published_day']); ?> <small><?php e($row['posts']['published_month']); ?></small></h3>
       <h4 class="list-group-item-heading"><?php e($row['posts']['title']);?> <small>/<?php e($row['posts']['slug']);?></small></h4>
       <p class="list-group-item-text">
-        <?php e($row['posts']['word_count']);?> words by "<?php e($row['users']['username']);?>".
+        <?php e($row['posts']['word_count']);?> words by "<?php e($row['users']['name']);?>".
       </p>
     </a>
   <?php endforeach; ?>

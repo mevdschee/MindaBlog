@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th>Username</th>
+      <th>Name</th>
       <th>Created</th>
     </tr>
   </thead>
@@ -10,6 +11,7 @@
     <?php foreach ($rows as $row): ?>
     <tr>
       <td><?php e($row['users']['username']);?></td>
+      <td><?php e($row['users']['name']);?></td>
       <td><?php e($row['users']['created']);?></td>
     </tr>
     <?php endforeach; ?>

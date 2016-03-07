@@ -8,7 +8,7 @@
 <?php foreach (array_keys($data) as $n=>$i): ?>
 <item>
   <title><?php e($data[$i]['posts']['title']);?></title>
-  <link><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?>"></link>
+  <link><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?></link>
   <description></description>
   <pubDate><?php e(date("D, d M Y H:i:s O",strtotime($data[$i]['posts']['published'])));?></pubDate>
   <category></category>

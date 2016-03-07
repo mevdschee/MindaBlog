@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 html, body, input, button { font-family: Georgia, 'Times New Roman', Times, serif ; font-size: 115%; font-size: 115%; }
 .menu  { float: left; padding: 15px 25px; width: 350px; }
+.menu h1 a { color: gray; text-decoration:none; }
 .menu h1 { margin-top: 0;}
 .menu h3 { margin-top: 60px;margin-bottom: 0px;}
 .menu ul { list-style-type: none; padding-left: 0; margin-left: 0; margin-top: 10px; }

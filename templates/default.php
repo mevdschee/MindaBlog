@@ -16,3 +16,6 @@ if (!$stats) {
     $stats['visitors_month'] = DB::selectValue('select count(id) from `unique_visitors` where `day` >= ?',date('Y-m-01'));
     Cache::set("stats",$stats,30);
 }
+
+Buffer::set('title_html',$_SESSION['settings']['title_html']);
+Buffer::set('subtitle_html',$_SESSION['settings']['subtitle_html']);

@@ -11,7 +11,7 @@
   <tbody>
     <?php foreach ($stats['visitors'] as $stat): ?>
     <tr>
-      <td><?php e(date("D Y-m-d",strtotime($data['unique_visitors']['day'])));?></td>
+      <td><?php e(date("D Y-m-d",strtotime($stat['unique_visitors']['day'])));?></td>
       <td><?php e($stat['unique_visitors']['visitors']);?></td>
       <td><?php e($stat['unique_visitors']['views']);?></td>
       <td>

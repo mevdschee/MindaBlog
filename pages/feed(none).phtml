@@ -23,6 +23,7 @@
   <title><?php e($data[$i]['posts']['title']);?></title>
   <link><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?></link>
 	<comments><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?>#respond</comments>
+	<pubDate><?php e(date('D, d M Y H:i:s O',timetostr($data[$i]['posts']['published'])));?></pubDate>
 	<dc:creator><![CDATA[<?php e($data[$i]['users']['name']);?>]]></dc:creator>
 	<category><![CDATA[Uncategorized]]></category>
 	<guid isPermaLink="false"><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?></guid>

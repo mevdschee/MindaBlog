@@ -12,6 +12,7 @@
     <div class="menu">
         <h1><a href="<?php e(Router::getBaseUrl()); ?>"><?php Buffer::get('title_html'); ?></h1>
         <p class="subtitle"><?php Buffer::get('subtitle_html'); ?></p>
+        <p><a href="feed">Subscribe to RSS</a></p>
         <h3>Popular posts</h3>
         <ul>
           <?php foreach ($stats['popular_posts'] as $slug => $title): ?>
@@ -31,7 +32,6 @@
           <li>This month: <?php e($stats['visitors_month']); ?></li>
         </ul>
         <br/>
-        <p><a href="feed">Subscribe to RSS</a></p>
     </div>
     <div class="body">
         <?php Buffer::get('html'); ?>

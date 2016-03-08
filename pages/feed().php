@@ -5,7 +5,9 @@ if (!isset($_SESSION['settings'])) {
 $data = DB::select('select * from posts,users where posts.user_id = users.id and published is not null and published < NOW() order by published desc limit 10');
 foreach (array_keys($data) as $i) {
   if ($pos=strpos($data[$i]['posts']['content'],'(...)')) {
+    $data[$i]['posts']['intro'] = substr($data[$i]['posts']['content'], 0, $pos).'...';
   	$data[$i]['posts']['content'] = substr_replace($data[$i]['posts']['content'], '', $pos, 5);
   }
+  Buffer::set("intro[$i]",trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['intro'])));
 	Buffer::set("content[$i]",trim(Michelf\Markdown::defaultTransform($data[$i]['posts']['content'])));
 }

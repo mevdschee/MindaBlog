@@ -24,6 +24,7 @@
 	<comments><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?>#respond</comments>
 	<dc:creator><![CDATA[<?php e($data[$i]['users']['name']);?>]]></dc:creator>
 	<category><![CDATA[Uncategorized]]></category>
+	<guid isPermaLink="false"><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?></guid>
 	<description><![CDATA[<?php Buffer::get("intro[$i]"); ?>]]></description>
   <content:encoded><![CDATA[<?php Buffer::get("content[$i]"); ?>]]></content:encoded>
 </item>

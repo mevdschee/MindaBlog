@@ -1,4 +1,4 @@
 <h2 class="title"><a href="<?php e(urlencode($data['posts']['slug']));?>"><?php e($data['posts']['title']);?></a></h2>
-<p class="details"><?php e(date("D d M Y",strtotime($data['posts']['published'])));?> - by '<?php e($data['users']['name']);?>'</p>
+<p class="details"><?php e(date("d M Y",strtotime($data['posts']['published'])));?> - by '<?php e($data['users']['name']);?>'</p>
 <?php Buffer::get('content'); ?>
 <hr class="continue"/>

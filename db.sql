@@ -34,7 +34,10 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO `settings` (`id`, `key`, `value`, `comment`) VALUES
-(1,	'title',	'TQdev.com',	'');
+(1,	'title',	'TQdev.com',	''),
+(2,	'title_html',	'<strong style=\"font-size: 300%;\">TQ</strong><br/>dev.com</a>',	''),
+(3,	'subtitle',	'Blog about software development',	''),
+(4,	'subtitle_html',	'<em>Blog about software development</em>',	'');
 
 DROP TABLE IF EXISTS `unique_views`;
 CREATE TABLE `unique_views` (

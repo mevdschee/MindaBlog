@@ -12,7 +12,7 @@ CREATE TABLE `posts` (
   `content` mediumtext COLLATE utf8_bin NOT NULL,
   `word_count` int(11) NOT NULL,
   `modified` datetime NOT NULL,
-  `published` date DEFAULT NULL,
+  `published` datetime DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),

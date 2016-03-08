@@ -2,7 +2,7 @@
 if (!empty($_POST)) {
 	if (!preg_match('/^[a-z0-9-]+$/', $_POST['posts']['slug'])) $errors['posts[slug]']='Only letters, numbers and the minus character are allowed';
 	if (!$_POST['posts']['published']) $_POST['posts']['published'] = null;
-	else $_POST['posts']['published'].=date(' H:i:s');
+	else $_POST['posts']['published'].=date(' H:00:00');
 	if (DB::selectValue('SELECT slug FROM posts where slug = ? and id != ?', $_POST['posts']['slug'], $id)) $errors['posts[slug]']='Already taken';
 	if (!isset($errors)) {
 		$rowsAffected = DB::update('UPDATE posts SET published = ?, slug = ?, title = ?, content = ?, word_count = ?, modified = NOW() WHERE id = ?', $_POST['posts']['published'], $_POST['posts']['slug'], $_POST['posts']['title'], $_POST['posts']['content'], str_word_count($_POST['posts']['content']), $id);

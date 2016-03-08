@@ -1,0 +1,32 @@
+<?php header('Content-Type: application/rss+xml'); ?>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+<channel>
+<title><?php e($_SESSION['settings']['title']);?></title>
+<atom:link href="<?php e(Router::getBaseUrl());?>/feed" rel="self" type="application/rss+xml" />
+<description><?php e($_SESSION['settings']['subtitle']);?></description>
+<lastBuildDate><?php e(date('D, d M Y H:i:s O'));?></lastBuildDate>
+<language>en-US</language>
+<sy:updatePeriod>hourly</sy:updatePeriod>
+<sy:updateFrequency>1</sy:updateFrequency>
+<generator>MindaBlog</generator>
+<?php foreach (array_keys($data) as $i): ?>
+<item>
+  <title><?php e($data[$i]['posts']['title']);?></title>
+  <link><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?></link>
+	<comments><?php e(Router::getBaseUrl().urlencode($data[$i]['posts']['slug']));?>#respond</comments>
+	<dc:creator><![CDATA[<?php e($data[$i]['users']['name']);?>]]></dc:creator>
+	<category><![CDATA[Uncategorized]]></category>
+	<description><![CDATA[]]></description>
+  <content:encoded><![CDATA[<?php Buffer::get("content[$i]"); ?>]]></content:encoded>
+</item>
+<?php endforeach; ?>
+</channel>
+</rss>

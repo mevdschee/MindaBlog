@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <base href="<?php e(Router::getBaseUrl()); ?>">
     <title>Admin</title>
@@ -9,7 +9,7 @@
 
     <!-- jDB -->
     <script src="js/jquery.min.js"></script>
-    
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
@@ -38,7 +38,7 @@
           <li class="<?php e($item['active']); ?>">
 		    <a href="<?php e($url); ?>"><?php e($item['title']); ?></a>
 		  </li>
-		<?php endforeach; ?>  
+		<?php endforeach; ?>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -59,7 +59,7 @@
 
   <div class="container">
 
-    <?php foreach ($flash as $type=>$text): ?> 
+    <?php foreach ($flash as $type=>$text): ?>
     <div class="row">
       <div class="col-md-12">
          <div class="alert alert-<?php e($type); ?>" role="alert">
@@ -67,8 +67,8 @@
          </div>
       </div>
     </div>
-    <?php endforeach; ?> 
-    
+    <?php endforeach; ?>
+
     <div class="row">
       <div class="col-md-12">
          <?php Buffer::get('html'); ?>

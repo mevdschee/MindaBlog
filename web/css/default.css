@@ -20,7 +20,8 @@ code { font-size: 75%; }
 .sidebar ul { list-style-type: none; padding-left: 0; margin-left: 0; margin-top: 0.5em; }
 .sidebar ul li { padding: 0.5em 0;}
 .body  { padding: 0.5em 1em; }
-h1, h2, h3, h4, h5, h6, p { margin: 1em 0; }
+h1, h2, h3, h4, h5, h6 { margin-top: 1.5em; }
+p { margin: 1em 0; }
 ul,ol { margin-left: 1.2em; }
 p,li { line-height: 175%; }
 input,button { padding: .5em 1em; }
@@ -39,4 +40,4 @@ html, body, input, button { font-size: 22px; }
 .sidebar { top: 16em; }
 #debugger-bar { z-index: 99; }
 
-}d
+}

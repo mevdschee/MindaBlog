@@ -29,6 +29,7 @@ hr.continue { width:50%; border: 0; border-bottom: 1px dashed silver; margin: 2.
 h2.title { margin-bottom:0;}
 p.details { font-size: 80%; color: gray; margin-top:0; }
 h2 a { color:inherit; text-decoration: none; }
+blockquote { font-style: italic; }
 
 @media only screen and (min-width: 850px) {
 

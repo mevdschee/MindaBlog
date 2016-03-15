@@ -25,7 +25,7 @@ p { margin: 1em 0; }
 ul,ol { margin-left: 2.5em; }
 p,li { line-height: 175%; }
 input,button { padding: .5em 1em; }
-body { max-width: 60em; margin-left: auto; margin-right: auto; }
+body { max-width: 58em; margin-left: auto; margin-right: auto; }
 hr.continue { width:50%; border: 0; border-bottom: 1px dashed silver; margin: 2em auto; }
 h2.title { margin-bottom:0; margin-top: 1em;}
 p.details { font-size: 80%; color: gray; margin-top:0; }

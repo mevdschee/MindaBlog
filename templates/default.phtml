@@ -36,6 +36,11 @@
           <li>Today: <?php e($stats['visitors_today']); ?></li>
           <li>This month: <?php e($stats['visitors_month']); ?></li>
         </ul>
+        <h3>Subscribe by email</h3>
+        <form method="post" action="subscribe">
+          <input type="text" name="email"/>
+          <?php Session::getCsrfInput(); ?>
+        </form>
         <br/>
     </div>
     </body>

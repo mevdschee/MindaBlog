@@ -7,7 +7,9 @@ Demo: http://tqdev.com
 
 ### TODO
 
-- responsive for mobile
 - comments on posts
+- custom 404
+- Meta Description 
+- ssl?
 - pingback support?
 - image support?

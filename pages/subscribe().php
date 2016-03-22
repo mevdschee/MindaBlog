@@ -5,3 +5,4 @@ if (isset($_POST['email'])) {
     DB::insert('insert ignore into `subscribers` (`email`,`key`) values (?,?);',$email,sha1(time().$email));
   }
 }
+$title = 'Subscribe';

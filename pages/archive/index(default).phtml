@@ -1,0 +1,14 @@
+<ul>
+<?php $title = false; ?> 
+<?php foreach (array_keys($data) as $n=>$i): ?>
+<?php $newtitle = date("F Y",strtotime($data[$i]['posts']['published'])); if (!$title || $newtitle!=$title): $title = $newtitle; ?>
+</ul>
+<h2><?php e($title); ?></h2>
+<ul>
+<?php endif; ?>
+<li>
+    <?php e(date("jS",strtotime($data[$i]['posts']['published'])));?>: 
+    <a href="<?php e(urlencode($data[$i]['posts']['slug']));?>"><?php e($data[$i]['posts']['title']);?></a>
+</li>
+<?php endforeach; ?>
+</ul>

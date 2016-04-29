@@ -15,3 +15,4 @@ $data = DB::select('
     order by 
         published DESC
 ');
+$title = $_SESSION['settings']['title'].' archive';

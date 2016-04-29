@@ -30,6 +30,10 @@
             <li><a href="<?php e($slug); ?>"><?php e($title); ?></a></li>
           <?php endforeach; ?>
         </ul>
+        <h3>Links</h3>
+        <ul>
+          <li><a href="archive"><?php e($_SESSION['settings']['title']) ?> archive</a></li>
+        </ul>
         <h3>Unique visitors</h3>
         <ul>
           <li>Now online: <?php e($stats['visitors_5_min']); ?></li>

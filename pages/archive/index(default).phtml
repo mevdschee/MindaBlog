@@ -1,9 +1,11 @@
+<h2 class="title"><?php e($title) ?></h2>
+<p>All posts on this blog, grouped by publication month:</p>
 <ul>
-<?php $title = false; ?> 
+<?php $subtitle = false; ?> 
 <?php foreach (array_keys($data) as $n=>$i): ?>
-<?php $newtitle = date("F Y",strtotime($data[$i]['posts']['published'])); if (!$title || $newtitle!=$title): $title = $newtitle; ?>
+<?php $newtitle = date("F Y",strtotime($data[$i]['posts']['published'])); if (!$subtitle || $newtitle!=$subtitle): $subtitle = $newtitle; ?>
 </ul>
-<h2><?php e($title); ?></h2>
+<h3><?php e($subtitle); ?></h3>
 <ul>
 <?php endif; ?>
 <li>

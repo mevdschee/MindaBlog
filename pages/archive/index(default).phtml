@@ -11,6 +11,8 @@
 <li>
     <?php e(date("jS",strtotime($data[$i]['posts']['published'])));?>: 
     <a href="<?php e(urlencode($data[$i]['posts']['slug']));?>"><?php e($data[$i]['posts']['title']);?></a>
+    <?php if (isset($stats['popular_posts'][$data[$i]['posts']['slug']])): ?>&#9733;<?php endif; ?>
 </li>
 <?php endforeach; ?>
 </ul>
+<p>&#9733; = popular post</p>

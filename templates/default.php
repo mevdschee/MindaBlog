@@ -9,7 +9,7 @@ DB::insert('insert into `unique_visitors` (`ip`,`day`,`requests`,`last_seen`) va
 $stats = Cache::get("stats");
 if (!$stats) {
     $stats = array();
-    $stats['popular_posts'] = DB::selectPairs('select `slug`,`title`,count(`post_id`) as `views` from `posts`,`unique_views` where `posts`.`id`=`unique_views`.`post_id` and `posts`.`published` is not null and `posts`.`published` < NOW() group by `post_id` order by `views` desc limit 10');
+    $stats['popular_posts'] = DB::selectPairs('select `slug`,`title`,count(`post_id`) as `views` from `posts`,`unique_views` where `posts`.`id`=`unique_views`.`post_id` and `posts`.`published` is not null and `posts`.`published` < NOW() and `unique_views`.`day` > DATE_SUB(NOW(), INTERVAL 30 day) group by `post_id` order by `views` desc limit 10');
     $stats['latest_posts'] = DB::selectPairs('select `slug`,`title` from `posts` where `posts`.`published` is not null and `posts`.`published` < NOW() order by `published` desc limit 10');
     $stats['visitors_5_min'] = DB::selectValue('select count(id) from `unique_visitors` where `last_seen` > NOW() - INTERVAL 5 MINUTE');
     $stats['visitors_today'] = DB::selectValue('select count(id) from `unique_visitors` where `day` = ?',date('Y-m-d'));

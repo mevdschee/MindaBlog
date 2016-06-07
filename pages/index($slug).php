@@ -10,6 +10,6 @@ if ($pos=strpos($data['posts']['content'],'(...)')) {
 } else {
 	$data['posts']['description'] = $data['posts']['content'];
 }
-$data['posts']['description'] = strip_tags(Michelf\Markdown::defaultTransform($data['posts']['description']));
+$data['posts']['description'] = trim(strip_tags(Michelf\Markdown::defaultTransform($data['posts']['description'])));
 $title = $data['posts']['title'];
 Buffer::set('content',Michelf\Markdown::defaultTransform($data['posts']['content']));

@@ -5,7 +5,7 @@ DB::insert('insert into `unique_views` (`post_id`,`ip`,`day`,`requests`) values 
 if ($pos=strpos($data['posts']['content'],'(...)')) {
 	$data['posts']['content'] = substr_replace($data['posts']['content'], '', $pos, 5);
 	$data['posts']['description'] = substr($data['posts']['content'],0,$pos).'...';
-} else if ($pos = strpos($data['posts']['content'],array('.',' ',','),200)) {
+} else if ($pos = strpos($data['posts']['content'],' ',200)) {
 	$data['posts']['description'] = substr($data['posts']['content'],0,$pos).'...';
 } else {
 	$data['posts']['description'] = $data['posts']['content'];

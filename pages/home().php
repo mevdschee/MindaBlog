@@ -4,7 +4,7 @@ foreach (array_keys($data) as $i) {
 	if ($pos = strpos($data[$i]['posts']['content'], '(...)')) {
 		$data[$i]['posts']['html'] = substr($data[$i]['posts']['content'], 0, $pos).'...';
 		$data[$i]['posts']['more_html'] = true;
-	} else if ($pos = strpos($data['posts']['content'],array('.',' ',','),200)) {
+	} else if ($pos = strpos($data[$i]['posts']['content'],' ',200)) {
 		$data[$i]['posts']['html'] = substr($data[$i]['posts']['content'], 0, $pos).'...';
 		$data[$i]['posts']['more_html'] = true;
 	} else {

@@ -2,7 +2,7 @@
 
 function vertical_bar_graph($values,$height) {
     $real_max = max($values);
-    $max = 10**ceil(log10($real_max));
+    $max = pow(10,ceil(log10($real_max)));
     while ($max/2>$real_max) $max/=2;
     $html = '<div>';
     for ($i=0;$i<10;$i++) {

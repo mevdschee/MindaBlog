@@ -8,8 +8,6 @@ Demo: http://tqdev.com
 ### TODO
 
 - comments on posts
-- custom 404
-- Meta Description 
 - ssl?
 - pingback support?
 - image support?

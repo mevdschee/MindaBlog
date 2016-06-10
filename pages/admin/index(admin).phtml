@@ -1,5 +1,11 @@
 <h2>Dashboard</h2>
-<?php Buffer::get('vertical_bar_graph'); ?>
+<div class="row">
+<div class="col-md-6"><?php Buffer::get('daily_visitors_graph'); ?></div>
+<div class="col-md-6"><?php Buffer::get('monthly_visitors_graph'); ?></div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<br/>
 <table class="table">
   <thead>
     <tr>
@@ -10,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($stats['visitors'] as $stat): ?>
+    <?php foreach ($stats['visitors_per_day'] as $stat): ?>
     <tr>
       <td><?php e($stat['unique_visitors']['day']);?></td>
       <td><?php e($stat['unique_visitors']['visitors']);?></td>
@@ -24,3 +30,5 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+</div>
+</div>

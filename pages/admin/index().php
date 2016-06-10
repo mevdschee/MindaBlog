@@ -1,10 +1,12 @@
 <?php
 
-function vertical_bar_graph($values,$height) {
+function vertical_bar_graph($values,$height,$title='',$description='') {
     $real_max = max($values);
     $max = pow(10,ceil(log10($real_max)));
     while ($max/2>$real_max) $max/=2;
     $html = '<div>';
+    $html.= '<div style="position: relative; clear: both; text-align: center;">';
+    $html.= $title.'</div>';
     for ($i=0;$i<10;$i++) {
         if ($i%2==0) {
             $html.= '<div style="position: relative; top: '.($i/10*$height).'px; width: 100%;">';
@@ -33,8 +35,8 @@ function vertical_bar_graph($values,$height) {
             $html.= '</div>';
             $html.= '</div>';
     }
-    $html.= '<div style="position: relative; top: '.$height.'px; width: 100%; border-top: 1px solid #aaa;">';
-    $html.= '</div>';
+    $html.= '<div style="position: relative; clear:both; border-top: 1px solid #aaa;">';
+    $html.= $description.'</div>';
     $html.= '</div>';
     return $html;
 }
@@ -50,4 +52,4 @@ $values = array_combine(
     array_map(function($v){return $v['unique_visitors']['day'];},$stats['visitors']),
     array_map(function($v){return $v['unique_visitors']['visitors'];},$stats['visitors'])
 );
-Buffer::set('vertical_bar_graph',vertical_bar_graph($values,300));
+Buffer::set('vertical_bar_graph',vertical_bar_graph($values,300,'Unique visitors'));

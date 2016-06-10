@@ -17,5 +17,5 @@ $values = array_combine(
     array_map(function($v){return sprintf('%04d-%02d',$v['unique_visitors']['year'],$v['unique_visitors']['month']);},$stats['visitors_per_month']),
     array_map(function($v){return $v['unique_visitors']['visitors'];},$stats['visitors_per_month'])
 );
-while (count($values)<12) array_push($values,0);
-Buffer::set('monthly_visitors_graph',Graph::verticalBar($values,300,'Unique visitors per month'));
+while (count($values)<12) array_push($values,'');
+Buffer::set('monthly_visitors_graph',Graph::horizontalBar($values,300,'Unique visitors per month'));

@@ -23,12 +23,13 @@ function vertical_bar_graph($values,$height) {
         }
     }
     $c = count($values);
-    foreach ($values as $value) {
+    foreach ($values as $key=>$value) {
             $p = round(100*($value/$max));
+            $title = is_string($key)?$key.': '.$value:$value;
             $html.= '<div style="float: right; width: '.(100/$c).'%; height: '.$height.'px;">';
             $html.= '<div style="width: 100%; height: 100%; background-color: #eee;">';
-            $html.= '<div style="position: relative; margin: 0 10%; background-color: #aaa; height: '.$p.'%; top: '.(100-$p).'%">';
-            $html.= '</div>';
+            $html.= '<a style="display: block; position: relative; margin: 0 10%; background-color: #aaa; height: '.$p.'%; top: '.(100-$p).'%" title="'.$title.'">';
+            $html.= '</a>';
             $html.= '</div>';
             $html.= '</div>';
     }
@@ -45,5 +46,8 @@ if (!$stats) {
     $stats['posts'] = DB::selectPairs('select DATE(`published`) as "posts.published_date",`slug` from `posts` where `published` >= NOW() - INTERVAL 90 DAY');
     Cache::set("admin_stats",$stats,30);
 }
-$values = array_map(function($v){return $v['unique_visitors']['visitors'];},$stats['visitors']);
+$values = array_combine(
+    array_map(function($v){return $v['unique_visitors']['day'];},$stats['visitors']),
+    array_map(function($v){return $v['unique_visitors']['visitors'];},$stats['visitors'])
+);
 Buffer::set('vertical_bar_graph',vertical_bar_graph($values,300));

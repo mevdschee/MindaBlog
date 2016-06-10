@@ -52,4 +52,4 @@ $values = array_combine(
     array_map(function($v){return $v['unique_visitors']['day'];},$stats['visitors']),
     array_map(function($v){return $v['unique_visitors']['visitors'];},$stats['visitors'])
 );
-Buffer::set('vertical_bar_graph',vertical_bar_graph($values,300,'Unique visitors'));
+Buffer::set('vertical_bar_graph',vertical_bar_graph($values,300,'Unique visitors per day'));

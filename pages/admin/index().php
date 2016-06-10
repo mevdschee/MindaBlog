@@ -9,10 +9,10 @@ function vertical_bar_graph($values,$height) {
         if ($i%2==0) {
             $html.= '<div style="position: relative; top: '.($i/10*$height).'px; width: 100%;">';
             $html.= '<div style="position: absolute; width: 100%; text-align: left; border-top: 1px solid #aaa;">';
-            $html.= '&nbsp;'.round((1-$i/10)*$max);
+            $html.= '&nbsp;'.((1-$i/10)*$max);
             $html.= '</div>';
             $html.= '<div style="position: absolute; width: 100%; text-align: right; border-top: 1px solid #aaa;">';
-            $html.= round((1-$i/10)*$max).'&nbsp;';
+            $html.= ((1-$i/10)*$max).'&nbsp;';
             $html.= '</div>';
             $html.= '</div>';
         } else {

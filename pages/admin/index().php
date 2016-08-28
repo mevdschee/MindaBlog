@@ -44,10 +44,10 @@ $values = array_combine(
     array_map(function($v){return $v['unique_other_views']['visitors'];},$stats['homepage_visitors_per_day'])
 );
 while (count($values)<30) array_push($values,0);
-Buffer::set('daily_homepage_visitors_graph',Graph::verticalBar($values,300,'Unique homepage visits per day'));
+Buffer::set('daily_homepage_visitors_graph',Graph::verticalBar($values,300,'Unique homepage visitors per day'));
 $values = array_combine(
     array_map(function($v){return sprintf('%04d-%02d',$v['unique_other_views']['year'],$v['unique_other_views']['month']);},$stats['homepage_visitors_per_month']),
     array_map(function($v){return $v['unique_other_views']['visitors'];},$stats['homepage_visitors_per_month'])
 );
 while (count($values)<12) array_push($values,'');
-Buffer::set('monthly_homepage_visitors_graph',Graph::verticalBar($values,300,'Unique homepage visits per month'));
+Buffer::set('monthly_homepage_visitors_graph',Graph::verticalBar($values,300,'Unique homepage visitors per month'));

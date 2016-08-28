@@ -1,6 +1,5 @@
 <?php
 require __DIR__.'/stats.php';
-DB::insert('insert into `unique_visitors` (`ip`,`day`,`referrer_id`,`user_agent_id`,`requests`,`last_seen`) values (?,DATE(NOW()),?,?,1,NOW()) ON DUPLICATE KEY UPDATE `requests`=`requests`+1, `last_seen`=NOW();',$_SERVER['REMOTE_ADDR'],$_SESSION['referrer_id'],$_SESSION['user_agent_id']);
 
 $stats = Cache::get("stats");
 if (!$stats) {

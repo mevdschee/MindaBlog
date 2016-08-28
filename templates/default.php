@@ -1,10 +1,6 @@
 <?php
-
-if (!isset($_SESSION['settings'])) {
-    $_SESSION['settings'] = DB::selectPairs('select `key`,`value` from settings');
-}
-
-DB::insert('insert into `unique_visitors` (`ip`,`day`,`requests`,`last_seen`) values (?,DATE(NOW()),1,NOW()) ON DUPLICATE KEY UPDATE `requests`=`requests`+1, `last_seen`=NOW();',$_SERVER['REMOTE_ADDR']);
+require __DIR__.'/stats.php';
+DB::insert('insert ignore into `unique_visitors` (`ip`,`day`,`referrer_id`,`user_agent_id`,`requests`,`last_seen`) values (?,DATE(NOW()),?,?,1,NOW()) ON DUPLICATE KEY UPDATE `requests`=`requests`+1, `last_seen`=NOW();',$_SERVER['REMOTE_ADDR'],$_SESSION['referrer_id'],$_SESSION['user_agent_id']);
 
 $stats = Cache::get("stats");
 if (!$stats) {

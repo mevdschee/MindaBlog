@@ -8,6 +8,8 @@ if (!$stats) {
     $stats['visitors_per_month'] = DB::select('select YEAR(`day`) as "unique_visitors.year",MONTH(`day`) as "unique_visitors.month",count(id) as "unique_visitors.visitors" from `unique_visitors` where `day` >= NOW() - INTERVAL 1 YEAR group by YEAR(`day`),MONTH(`day`) order by YEAR(`day`),MONTH(`day`) desc');
     $stats['subscribers_per_day'] = DB::select('select `day`,count(id) as "unique_other_views.visitors" from `unique_other_views` where `type` = \'feed\' and `day` >= NOW() - INTERVAL 30 DAY group by `day` order by `day` desc');
     $stats['subscribers_per_month'] = DB::select('select YEAR(`day`) as "unique_other_views.year",MONTH(`day`) as "unique_other_views.month",count(id) as "unique_other_views.visitors" from `unique_other_views` where `type` = \'feed\' and `day` >= NOW() - INTERVAL 1 YEAR group by YEAR(`day`),MONTH(`day`) order by YEAR(`day`),MONTH(`day`) desc');
+    $stats['homepage_hits_per_day'] = DB::select('select `day`,count(id) as "unique_other_views.visitors" from `unique_other_views` where `type` = \'home\' and `day` >= NOW() - INTERVAL 30 DAY group by `day` order by `day` desc');
+    $stats['homepage_hits_per_month'] = DB::select('select YEAR(`day`) as "unique_other_views.year",MONTH(`day`) as "unique_other_views.month",count(id) as "unique_other_views.visitors" from `unique_other_views` where `type` = \'home\' and `day` >= NOW() - INTERVAL 1 YEAR group by YEAR(`day`),MONTH(`day`) order by YEAR(`day`),MONTH(`day`) desc');
     $stats['posts'] = DB::selectPairs('select DATE(`published`) as "posts.published_date",`slug` from `posts` where `published` >= NOW() - INTERVAL 30 DAY');
     Cache::set("admin_stats",$stats,30);
 }
@@ -37,3 +39,15 @@ $values = array_combine(
 );
 while (count($values)<12) array_push($values,'');
 Buffer::set('monthly_subscribers_graph',Graph::verticalBar($values,300,'Unique subscribers per month'));
+$values = array_combine(
+    array_map(function($v){return $v['unique_other_views']['day'];},$stats['homepage_hits_per_day']),
+    array_map(function($v){return $v['unique_other_views']['visitors'];},$stats['homepage_hits_per_day'])
+);
+while (count($values)<30) array_push($values,0);
+Buffer::set('daily_homepage_hits_graph',Graph::verticalBar($values,300,'Unique homepage hits per day'));
+$values = array_combine(
+    array_map(function($v){return sprintf('%04d-%02d',$v['unique_other_views']['year'],$v['unique_other_views']['month']);},$stats['homepage_hits_per_month']),
+    array_map(function($v){return $v['unique_other_views']['visitors'];},$stats['homepage_hits_per_month'])
+);
+while (count($values)<12) array_push($values,'');
+Buffer::set('monthly_homepage_hits_graph',Graph::verticalBar($values,300,'Unique homepage hits per month'));

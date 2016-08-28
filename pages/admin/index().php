@@ -7,7 +7,7 @@ if (!$stats) {
     $stats['visitors_per_day'] = DB::select('select `day`,count(id) as "unique_visitors.visitors",sum(requests) as "unique_visitors.views" from `unique_visitors` where `day` >= NOW() - INTERVAL 30 DAY group by `day` order by `day` desc');
     $stats['visitors_per_month'] = DB::select('select YEAR(`day`) as "unique_visitors.year",MONTH(`day`) as "unique_visitors.month",count(id) as "unique_visitors.visitors" from `unique_visitors` where `day` >= NOW() - INTERVAL 1 YEAR group by YEAR(`day`),MONTH(`day`) order by YEAR(`day`),MONTH(`day`) desc');
     $stats['subscribers_per_day'] = DB::select('select `day`,count(id) as "unique_other_views.visitors" from `unique_other_views` where `type` = \'feed\' and `day` >= NOW() - INTERVAL 30 DAY group by `day` order by `day` desc');
-    $stats['subscribers_per_month'] = DB::select('select YEAR(`day`) as "unique_visitors.year",MONTH(`day`) as "unique_visitors.month",count(id) as "unique_other_views.visitors" from `unique_other_views` where `type` = \'feed\' and `day` >= NOW() - INTERVAL 1 YEAR group by YEAR(`day`),MONTH(`day`) order by YEAR(`day`),MONTH(`day`) desc');
+    $stats['subscribers_per_month'] = DB::select('select YEAR(`day`) as "unique_other_views.year",MONTH(`day`) as "unique_other_views.month",count(id) as "unique_other_views.visitors" from `unique_other_views` where `type` = \'feed\' and `day` >= NOW() - INTERVAL 1 YEAR group by YEAR(`day`),MONTH(`day`) order by YEAR(`day`),MONTH(`day`) desc');
     $stats['posts'] = DB::selectPairs('select DATE(`published`) as "posts.published_date",`slug` from `posts` where `published` >= NOW() - INTERVAL 30 DAY');
     Cache::set("admin_stats",$stats,30);
 }

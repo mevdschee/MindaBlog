@@ -15,9 +15,10 @@ class Auth
         static::$usernameField);
       $user = DB::selectOne($query,$username);
       if ($user) {
-      	if (password_verify($password, $user['users'][static::$passwordField])) {
+        $table = static::$usersTable;
+      	if (password_verify($password, $user[$table][static::$passwordField])) {
       		session_regenerate_id(true);
-      		$_SESSION['user'] = $user['users'];
+      		$_SESSION['user'] = $user[$table];
       	} else {
       		$user = array();
       	}

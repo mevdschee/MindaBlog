@@ -23,6 +23,7 @@ code { font-size: 75%; }
 .sidebar ul li { padding: 0.5em 0;}
 .body  { padding: 0.5em 1em; }
 h1, h2, h3, h4, h5, h6 { margin-top: 1.5em; }
+h3 {margin-top: 2em;}
 p { margin: 1em 0; }
 ul,ol { margin-left: 0; }
 p,li { line-height: 175%; }
@@ -33,52 +34,67 @@ h2.title { margin-bottom:0; margin-top: 1em;}
 p.details { font-size: 80%; color: gray; margin-top:0; }
 h2 a { color:inherit; text-decoration: none; }
 blockquote { font-style: italic; }
-pre { overflow: auto; }
+pre { overflow: auto; background: #f4f4f4; padding: 15px;}
 
 @media only screen and (min-width: 850px) {
-
-html, body, input, button { font-size: 22px; }
-.header, .sidebar { position: absolute; width: 17em; }
-.body { margin-left:20em; }
 .sidebar { top: 16em; }
 #debugger-bar { z-index: 99; }
-
+body {font-size: 22px;}
 }
 
-h2, .details {font-family: 'Verdana', sans-serif;}
+
+/*merge deze stuff */
+
+
+  h2, h3, .details {font-family: 'Verdana', sans-serif;}
   h2.title {font-size: 150%; margin-bottom: 0.7em;}
   p.details {font-size: 75%; color: #9e9e9e;}
   p, li {line-height: 150%;}
   hr.continue {border: 1px solid transparent;}
-  body, a {color: #333;}
+  body, a {color: #222;}
   a {border-bottom: 1px solid #CCC;}
   a:hover {text-decoration: none; border-bottom: 1px solid #666;}
   h1 a, h1 a:hover, h2 a, h2 a:hover {border: 0;}
   body {max-width: 100%;}
+  .body {margin-top: 0em;}
+  .body {margin: 0 auto; max-width: 41em;}
   .body, .header, .sidebar {margin: 0 auto; max-width: 41em;}
   .header {color: #9e9e9e;}
-  .header p {margin: 0;}
+  .header p {margin: 0; display: none;}
   .header p:last-child {display: none;}
   .header {margin-bottom: 1em;}
-  .header h1 {margin: 1em 0 0.5em; font-size: 100%!important;
-line-height: 1em; display: inline-block; background: #aaa; padding:
-0.4em 0.5em 0.5em 0.55em; border-radius: 0.5em;}
-  .header h1, a {
+  .header h1 {margin: 0.55em 0 0.3em; font-size: 100%!important;
+line-height: 1em; display: inline-block;}
+  .header h1 a, a {
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
   }
-  .header h1:hover {background: rgb(184,19,13);}
-  .header h1 a {color: white;}
+  .header h1 a:hover {background: #ccc;}
+  .header h1 a {display: block; color: white; background:
+rgb(184,19,13); padding: 0.4em 0.5em 0.5em 0.55em; border-radius:
+0.5em;}
   .header h1 a strong {font-size: 300%!important; line-height: 1em;}
+  form {margin: 0.5em 0;}
 
-  @media only screen and (min-width: 850px) {
-
-  html, body, input, button { font-size: 22px; }
-  .header, .sidebar { position: inherit; width: auto; }
-  .body { margin-left:0 auto; }
-  .sidebar { top: 16em; }
-  #debugger-bar { z-index: 99; }
+  @media only screen and (min-width: 1350px) {
+    .body {margin-top: -4em;}
+    .header, .sidebar { position: inherit; width: auto; max-width: 100%;}
+.sidebar {border-top: 1px solid #ddd; margin-top: 5em;}
+.sidebar div {float: left; width: 50%; padding-bottom: 3em; padding-top: 1em;}
+.sidebar div:nth-child(1) {float: left;}
+.sidebar div:nth-child(2) {float: right;}
+.sidebar div:nth-child(3) {float: left;}
 
   }
+  @media only screen and (min-width: 2000px) {
+    .header, .sidebar {padding: 0.5em 3em;}
+
+  }
+@media only screen and (min-width: 1600px) {
+.sidebar div {float: left; width: 33.33%;}
+.sidebar div:nth-child(1) {float: right;}
+.sidebar div:nth-child(2) {float: right;}
+.sidebar div:nth-child(3) {float: left;}
+}

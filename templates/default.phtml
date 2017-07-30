@@ -21,18 +21,21 @@
         <?php Buffer::get('html'); ?>
     </div>
     <div class="sidebar">
+      <div>
         <h3>Popular posts</h3>
         <ul>
           <?php foreach ($stats['popular_posts'] as $slug => $title): ?>
             <li><a href="<?php e($slug); ?>"><?php e($title); ?></a></li>
           <?php endforeach; ?>
         </ul>
+      </div><div>
         <h3>Latest posts</h3>
         <ul>
           <?php foreach ($stats['latest_posts'] as $slug => $title): ?>
             <li><a href="<?php e($slug); ?>"><?php e($title); ?></a></li>
           <?php endforeach; ?>
         </ul>
+      </div><div>
         <h3>Links</h3>
         <ul>
           <li><a href="archive"><?php e($_SESSION['settings']['title']) ?> archive</a></li>
@@ -48,7 +51,7 @@
           <input type="text" name="email"/>
           <?php Session::getCsrfInput(); ?>
         </form>
-        <br/>
+      </div>
     </div>
     </body>
 </html>

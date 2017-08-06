@@ -3,7 +3,7 @@ $(function() {
 
     var timeoutId;
 
-    var saveForm = function () {
+    $('input, textarea').bind("keypress", function () {
         $('#status').attr('class', 'pending').text('changes pending');
 
         // If a timer was already started, clear it.
@@ -24,8 +24,7 @@ $(function() {
                 },
             });            
         }, 750);
-    };
+    });
 
-    $('input, textarea').bind("keypress", saveForm);
-    setInterval(saveForm, 5000);
+    setInterval(function () { $.ajax({ type: 'get', url: 'admin/keepalive' }); }, 5000);
 });

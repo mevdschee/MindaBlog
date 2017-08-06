@@ -1,1 +1,1 @@
-setInterval(function () { $.ajax({ type: 'get', url: 'admin/keepalive' }); }, 5000);
+setInterval(function () { $.ajax({ type: 'get', url: 'admin/keepalive' }); }, 50000);

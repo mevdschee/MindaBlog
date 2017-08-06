@@ -42,7 +42,9 @@
   		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="30" id="editor"><?php e($_POST['posts']['content']); ?></textarea>
     </div>
     <div class="form-group">
-    	<button class="btn btn-primary" type="submit" onclick="document.forms[0].submit=null;">Save</button> <span id="status">changes saved</span>
+    	<button class="btn btn-primary" type="submit" onclick="document.forms[0].submit=null;">Save</button>
+		<span id="status">changes saved</span>
+		<a class="btn" href="admin/posts/preview/<?php e($id); ?>">Preview</a>
     </div>
 	<?php Session::getCsrfInput(); ?>
 </form>

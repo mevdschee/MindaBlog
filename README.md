@@ -3,7 +3,7 @@ MindaBlog
 
 Blog software made with [MindaPHP](https://github.com/mevdschee/MindaPHP)
 
-Demo: http://tqdev.com
+Demo: https://tqdev.com
 
 ### TODO
 

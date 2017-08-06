@@ -26,5 +26,5 @@ $(function() {
         }, 750);
     });
 
-    setInterval(function () { $.ajax({ type: 'post', url: 'keepalive' }); }, 1000);
+    setInterval(function () { $.ajax({ cache: false, url: 'keepalive' }); }, 1000);
 });

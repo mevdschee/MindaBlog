@@ -10,21 +10,14 @@
     <!-- Bootstrap DatePicker -->
     <link href="css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
     <script src="js/bootstrap-datepicker.js"></script>
-    <script>
-    // save with ctrl-s
-    $(window).keypress(function(event) {
-        if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
-        $("form input[type=submit]").click();
-        event.preventDefault();
-        return false;
-    });
-    </script>
+    <script src="js/jquery.form.min.js"></script>
+    <script src="js/autosave-post.js"></script>
 
 <?php Buffer::end('head'); ?>
 <div class="page-header">
   <h1>Edit post</h1>
 </div>
-<form method="post">
+<form method="post" id="autosave">
 	<div class="form-group">
 	    <label class="control-label" for="posts[published]">Published</label>
 		<div class="input-group">
@@ -46,11 +39,10 @@
 	</div>
 	<div class="form-group">
 		<label class="control-label" for="posts[content]">Content</label>
-  		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="30" id="posts[content]"><?php e($_POST['posts']['content']); ?></textarea>
+  		<textarea class="form-control" name="posts[content]" data-provide="markdown" rows="30" id="editor"><?php e($_POST['posts']['content']); ?></textarea>
     </div>
     <div class="form-group">
-    	<button class="btn btn-primary" type="submit">Save</button> <input class="btn" type="submit" name="_save_and_continue" value="Save" />
+    	<button class="btn btn-primary" type="submit" onclick="document.forms[0].submit=null;">Save</button> <span id="status">changes saved</span>
     </div>
 	<?php Session::getCsrfInput(); ?>
 </form>
-<iframe marginwidth="0" marginheight="0" width="100" height="10" scrolling="no" frameborder=0 src="admin/keepalive"></iframe>

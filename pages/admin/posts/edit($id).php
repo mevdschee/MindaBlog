@@ -7,7 +7,7 @@ if (!empty($_POST)) {
 	if (!isset($errors)) {
 		$rowsAffected = DB::update('UPDATE posts SET published = ?, slug = ?, title = ?, content = ?, word_count = ?, modified = NOW() WHERE id = ?', $_POST['posts']['published'], $_POST['posts']['slug'], $_POST['posts']['title'], $_POST['posts']['content'], str_word_count($_POST['posts']['content']), $id);
 		if ($rowsAffected!==false) {
-			if (!isset($_POST['_save_and_continue'])) Router::redirect('admin/posts/index');
+			Router::redirect('admin/posts/index');
 		}
 	} else {
 		$flash['danger'] = 'Post not saved';

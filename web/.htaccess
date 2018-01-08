@@ -4,6 +4,8 @@ php_flag display_errors on
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
+    RewriteCond %{QUERY_STRING} . [NC]
+    RewriteRule ^(.*)$ /$1? [R=301,L]
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
     RewriteCond %{REQUEST_FILENAME} !-d

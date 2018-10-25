@@ -1,6 +1,7 @@
 .buildpath
 .project
 .settings
+project.geany
 composer.phar
 phpunit.phar
 tools/latest.php

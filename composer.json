@@ -1,6 +1,7 @@
 {
     "name": "maurits/mindablog",
     "require": {
+        "mindaphp/core": "*",
         "michelf/php-markdown": "*"
     },
     "authors": [

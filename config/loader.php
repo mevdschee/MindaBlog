@@ -1,3 +1,3 @@
 <?php
-Loader::register('mindaphp', 'MindaPHP');
+Loader::register('mindaphp/core', 'MindaPHP');
 Loader::register('michelf/php-markdown/Michelf', 'Michelf');

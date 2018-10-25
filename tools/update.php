@@ -5,13 +5,13 @@ $files = 0;
 $created = 0;
 $updated = 0;
 $url = "https://github.com/mevdschee/MindaPHP/archive/master.zip";
-$zipDir = 'MindaPHP-master/';
+$zipDir = 'mindaphp-master/';
 $archive = 'tools/master.zip';
 $path = realpath('.');
 $prefixes = array(
   'web/index.php',
   'web/debugger/',
-  'vendor/mindaphp/',
+  'vendor/mindaphp/core/',
   'tools/'
 );
 

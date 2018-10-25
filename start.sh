@@ -5,3 +5,4 @@ if [[ $? != 0 ]] ; then
 fi
 php composer.phar install
 php -t web/ -S localhost:8000 tools/server.php
+

@@ -1,13 +1,17 @@
 {
     "name": "maurits/mindablog",
-    "require": {
-        "mindaphp/core": "*",
-        "michelf/php-markdown": "*"
-    },
     "authors": [
         {
             "name": "Maurits van der Schee",
             "email": "maurits@vdschee.nl"
         }
-    ]
+    ],
+    "require": {
+        "mindaphp/core": "*",
+        "michelf/php-markdown": "*"
+    },
+    "require-dev": {
+        "mindaphp/tools": "*",
+        "mindaphp/debugger": "*"
+    }
 }

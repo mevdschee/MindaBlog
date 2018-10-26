@@ -89,16 +89,16 @@
     "packages-dev": [
         {
             "name": "mindaphp/debugger",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mindaphp/debugger.git",
-                "reference": "663c7a297a1b6954a70468db7d78e200247bf0d0"
+                "reference": "c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mindaphp/debugger/zipball/663c7a297a1b6954a70468db7d78e200247bf0d0",
-                "reference": "663c7a297a1b6954a70468db7d78e200247bf0d0",
+                "url": "https://api.github.com/repos/mindaphp/debugger/zipball/c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3",
+                "reference": "c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3",
                 "shasum": ""
             },
             "require": {
@@ -116,24 +116,23 @@
                     "homepage": "https://www.tqdev.com"
                 }
             ],
-            "time": "2018-10-26T08:57:29+00:00"
+            "time": "2018-10-26T21:29:47+00:00"
         },
         {
             "name": "mindaphp/tools",
-            "version": "v1.1.4",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mindaphp/tools.git",
-                "reference": "a22157721f0c1c74e32a8874fb6b7d8293c3af8b"
+                "reference": "8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mindaphp/tools/zipball/a22157721f0c1c74e32a8874fb6b7d8293c3af8b",
-                "reference": "a22157721f0c1c74e32a8874fb6b7d8293c3af8b",
+                "url": "https://api.github.com/repos/mindaphp/tools/zipball/8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca",
+                "reference": "8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca",
                 "shasum": ""
             },
             "require": {
-                "ext-zip": "*",
                 "php": ">=5.3.0"
             },
             "type": "library",
@@ -148,7 +147,7 @@
                     "homepage": "https://www.tqdev.com"
                 }
             ],
-            "time": "2018-10-26T14:26:54+00:00"
+            "time": "2018-10-26T21:35:48+00:00"
         }
     ],
     "aliases": [],

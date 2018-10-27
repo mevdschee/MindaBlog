@@ -53,17 +53,17 @@
             "time": "2018-01-15T00:49:33+00:00"
         },
         {
-            "name": "mindaphp/core",
-            "version": "v1.1.6",
+            "name": "MintyPHP/core",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mindaphp/core.git",
-                "reference": "3e90c6f30c56d8ce5c72223b4762ce4a3870c6ed"
+                "url": "https://github.com/MintyPHP/core.git",
+                "reference": "1b9c796d366af72e9a585fe5c06033be243e21f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mindaphp/core/zipball/3e90c6f30c56d8ce5c72223b4762ce4a3870c6ed",
-                "reference": "3e90c6f30c56d8ce5c72223b4762ce4a3870c6ed",
+                "url": "https://api.github.com/repos/MintyPHP/core/zipball/1b9c796d366af72e9a585fe5c06033be243e21f5",
+                "reference": "1b9c796d366af72e9a585fe5c06033be243e21f5",
                 "shasum": ""
             },
             "require": {
@@ -83,21 +83,21 @@
                     "homepage": "https://www.tqdev.com"
                 }
             ],
-            "time": "2018-10-26T22:37:35+00:00"
+            "time": "2018-10-26T23:20:37+00:00"
         }
     ],
     "packages-dev": [
         {
-            "name": "mindaphp/debugger",
+            "name": "MintyPHP/debugger",
             "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mindaphp/debugger.git",
+                "url": "https://github.com/MintyPHP/debugger.git",
                 "reference": "c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mindaphp/debugger/zipball/c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3",
+                "url": "https://api.github.com/repos/MintyPHP/debugger/zipball/c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3",
                 "reference": "c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3",
                 "shasum": ""
             },
@@ -119,16 +119,16 @@
             "time": "2018-10-26T21:29:47+00:00"
         },
         {
-            "name": "mindaphp/tools",
+            "name": "MintyPHP/tools",
             "version": "v1.1.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mindaphp/tools.git",
+                "url": "https://github.com/MintyPHP/tools.git",
                 "reference": "8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mindaphp/tools/zipball/8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca",
+                "url": "https://api.github.com/repos/MintyPHP/tools/zipball/8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca",
                 "reference": "8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca",
                 "shasum": ""
             },

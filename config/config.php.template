@@ -1,5 +1,5 @@
 <?php
-namespace MindaPHP\Config;
+namespace MintyPHP\Config;
 
 class Router
 {

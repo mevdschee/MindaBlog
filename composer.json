@@ -1,5 +1,6 @@
 {
-    "name": "maurits/mindablog",
+    "name": "mevdschee/mintyblog",
+    "description": "Blog software made with MintyPHP",
     "authors": [
         {
             "name": "Maurits van der Schee",
@@ -7,11 +8,11 @@
         }
     ],
     "require": {
-        "mindaphp/core": "*",
+        "mintyphp/core": "*",
         "michelf/php-markdown": "*"
     },
     "require-dev": {
-        "mindaphp/tools": "*",
-        "mindaphp/debugger": "*"
+        "mintyphp/tools": "*",
+        "mintyphp/debugger": "*"
     }
 }

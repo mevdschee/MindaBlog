@@ -2,7 +2,7 @@
 // Change directory to project root
 chdir(__DIR__.'/..');
 // Use default autoload implementation
-require 'vendor/mindaphp/core/src/Loader.php';
+require 'vendor/MintyPHP/core/src/Loader.php';
 // Load the libraries
 require 'config/loader.php';
 // Load the config parameters
@@ -29,7 +29,7 @@ if (Router::getTemplateAction()) {
 }
 if (ob_get_contents()) {
 	ob_end_flush();
-	trigger_error('MindaPHP template action"'.Router::getTemplateAction().'" should not send output. Error raised ', E_USER_WARNING);
+	trigger_error('MintyPHP template action"'.Router::getTemplateAction().'" should not send output. Error raised ', E_USER_WARNING);
 }
 else {
 	ob_end_clean();
@@ -42,7 +42,7 @@ if (Router::getAction()) {
 }
 if (ob_get_contents()) {
   ob_end_flush();
-  trigger_error('MindaPHP action "'.Router::getAction().'" should not send output. Error raised ', E_USER_WARNING);
+  trigger_error('MintyPHP action "'.Router::getAction().'" should not send output. Error raised ', E_USER_WARNING);
 }
 else {
   ob_end_clean();

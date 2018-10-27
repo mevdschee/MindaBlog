@@ -1,4 +1,4 @@
-MindaBlog
+MintyBlog
 ========
 
 Blog software made with [MintyPHP](https://github.com/MintyPHP)

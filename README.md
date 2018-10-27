@@ -1,7 +1,7 @@
 MindaBlog
 ========
 
-Blog software made with [MindaPHP](https://github.com/mevdschee/MindaPHP)
+Blog software made with [MintyPHP](https://github.com/MintyPHP)
 
 Demo: https://tqdev.com
 

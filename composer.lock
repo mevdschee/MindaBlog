@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af3b70f12911b2ec0585abee8778e587",
+    "content-hash": "2ebab609d1796332b47e1eed2b96848d",
     "packages": [
         {
             "name": "michelf/php-markdown",
@@ -53,17 +53,17 @@
             "time": "2018-01-15T00:49:33+00:00"
         },
         {
-            "name": "MintyPHP/core",
-            "version": "v1.1.7",
+            "name": "mintyphp/core",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/MintyPHP/core.git",
-                "reference": "1b9c796d366af72e9a585fe5c06033be243e21f5"
+                "url": "https://github.com/mintyphp/core.git",
+                "reference": "3727dbf20f1fcc0ac0d1cce8413732778ad44d8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MintyPHP/core/zipball/1b9c796d366af72e9a585fe5c06033be243e21f5",
-                "reference": "1b9c796d366af72e9a585fe5c06033be243e21f5",
+                "url": "https://api.github.com/repos/mintyphp/core/zipball/3727dbf20f1fcc0ac0d1cce8413732778ad44d8a",
+                "reference": "3727dbf20f1fcc0ac0d1cce8413732778ad44d8a",
                 "shasum": ""
             },
             "require": {
@@ -83,22 +83,22 @@
                     "homepage": "https://www.tqdev.com"
                 }
             ],
-            "time": "2018-10-26T23:20:37+00:00"
+            "time": "2018-10-27T08:29:34+00:00"
         }
     ],
     "packages-dev": [
         {
-            "name": "MintyPHP/debugger",
-            "version": "v1.1.1",
+            "name": "mintyphp/debugger",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/MintyPHP/debugger.git",
-                "reference": "c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3"
+                "url": "https://github.com/mintyphp/debugger.git",
+                "reference": "83ff092177a026ed82291110b602335cf62d3ac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MintyPHP/debugger/zipball/c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3",
-                "reference": "c9aa4ccabdebdd38a97893e8727d0751f3fc4cf3",
+                "url": "https://api.github.com/repos/mintyphp/debugger/zipball/83ff092177a026ed82291110b602335cf62d3ac4",
+                "reference": "83ff092177a026ed82291110b602335cf62d3ac4",
                 "shasum": ""
             },
             "require": {
@@ -116,20 +116,20 @@
                     "homepage": "https://www.tqdev.com"
                 }
             ],
-            "time": "2018-10-26T21:29:47+00:00"
+            "time": "2018-10-27T08:05:06+00:00"
         },
         {
-            "name": "MintyPHP/tools",
-            "version": "v1.1.7",
+            "name": "mintyphp/tools",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/MintyPHP/tools.git",
-                "reference": "8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca"
+                "url": "https://github.com/mintyphp/tools.git",
+                "reference": "d14bd69240a16ab824367edf4b41f2b4a58412fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MintyPHP/tools/zipball/8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca",
-                "reference": "8c90a414ccbfd2da6eddc6e86d8db68b662cb5ca",
+                "url": "https://api.github.com/repos/mintyphp/tools/zipball/d14bd69240a16ab824367edf4b41f2b4a58412fb",
+                "reference": "d14bd69240a16ab824367edf4b41f2b4a58412fb",
                 "shasum": ""
             },
             "require": {
@@ -147,7 +147,7 @@
                     "homepage": "https://www.tqdev.com"
                 }
             ],
-            "time": "2018-10-26T21:35:48+00:00"
+            "time": "2018-10-27T08:06:15+00:00"
         }
     ],
     "aliases": [],

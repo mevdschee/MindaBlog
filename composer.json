@@ -1,6 +1,6 @@
 {
     "name": "mevdschee/mintyblog",
-    "description": "Blog software made with MintyPHP",
+    "description": "Blog software made with the MintyPHP web framework",
     "authors": [
         {
             "name": "Maurits van der Schee",

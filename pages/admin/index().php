@@ -23,7 +23,7 @@ $values = array_combine(
     array_map(function($v){return sprintf('%04d-%02d',$v['unique_visitors']['year'],$v['unique_visitors']['month']);},$stats['visitors_per_month']),
     array_map(function($v){return $v['unique_visitors']['visitors'];},$stats['visitors_per_month'])
 );
-while (count($values)<12) array_push($values,'');
+while (count($values)<30) array_push($values,'');
 Buffer::set('monthly_visitors_graph',Graph::verticalBar($values,300,'Unique visitors per month'));
 Buffer::set('popular_posts_month_graph',Graph::horizontalBar($stats['popular_posts_month'],300,'Popular posts this month'));
 Buffer::set('popular_posts_day_graph',Graph::horizontalBar($stats['popular_posts_day'],300,'Popular posts this day'));
@@ -37,7 +37,7 @@ $values = array_combine(
     array_map(function($v){return sprintf('%04d-%02d',$v['unique_other_views']['year'],$v['unique_other_views']['month']);},$stats['subscribers_per_month']),
     array_map(function($v){return $v['unique_other_views']['visitors'];},$stats['subscribers_per_month'])
 );
-while (count($values)<12) array_push($values,'');
+while (count($values)<30) array_push($values,'');
 Buffer::set('monthly_subscribers_graph',Graph::verticalBar($values,300,'Unique subscribers per month'));
 $values = array_combine(
     array_map(function($v){return $v['unique_other_views']['day'];},$stats['homepage_visitors_per_day']),
@@ -49,5 +49,5 @@ $values = array_combine(
     array_map(function($v){return sprintf('%04d-%02d',$v['unique_other_views']['year'],$v['unique_other_views']['month']);},$stats['homepage_visitors_per_month']),
     array_map(function($v){return $v['unique_other_views']['visitors'];},$stats['homepage_visitors_per_month'])
 );
-while (count($values)<12) array_push($values,'');
+while (count($values)<30) array_push($values,'');
 Buffer::set('monthly_homepage_visitors_graph',Graph::verticalBar($values,300,'Unique homepage visitors per month'));

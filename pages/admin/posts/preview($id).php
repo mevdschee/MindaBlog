@@ -1,4 +1,6 @@
 <?php
+if (!isset($_SESSION['user'])) Router::redirect('admin/login'); 
+
 $data = DB::selectOne('SELECT * from posts,users where user_id = users.id and posts.id = ?', $id);
 
 if ($pos=strpos($data['posts']['content'],'(...)')) {

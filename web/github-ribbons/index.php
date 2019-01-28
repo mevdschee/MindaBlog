@@ -28,7 +28,7 @@ h1 { font-size: 40px;}
             <textarea style="<?php echo $style; ?>"><?php echo $html; ?></textarea><br/>
           <?php endforeach;?>
         <?php endforeach;?>
-        <p>Download the images by right-clicking them and choosing "Save As".</p>
+        <p>Download the images by right-clicking them and choosing "Save Image As".</p>
       </article>
     </div>
   </body>

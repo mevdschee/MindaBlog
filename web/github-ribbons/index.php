@@ -23,7 +23,7 @@ h1 { font-size: 40px;}
         <?php foreach ($corners as $corner): ?>
           <?php foreach ($colors as $color): ?>
           <?php $filename = "forkme_${corner}_${color}.svg";?>
-          <?php $html = '<a href="https://github.com/you"><img src="' . $filename . '" style="position:absolute;top:0;right:0;" alt="Fork me on GitHub"></a>';?>
+          <?php $html = '<a href="https://github.com/you"><img src="' . $filename . '" style="position:absolute;top:0;' . $corner . ':0;" alt="Fork me on GitHub"></a>';?>
             <img src="/github-ribbons/<?php echo $filename; ?>" />
             <textarea style="<?php echo $style; ?>"><?php echo $html; ?></textarea><br/>
           <?php endforeach;?>

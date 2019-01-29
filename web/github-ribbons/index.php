@@ -28,7 +28,7 @@ h1 { font-size: 40px;}
             <textarea style="<?php echo $style; ?>"><?php echo $html; ?></textarea><br/>
           <?php endforeach;?>
         <?php endforeach;?>
-        <p>Download the images by right-clicking them and choosing "Save Image As".</p>
+        <p>You may download <a href="github-ribbons.zip">github-ribbons.zip</a> containing this HTML page and all the SVG files.</p>
       </article>
     </div>
   </body>
